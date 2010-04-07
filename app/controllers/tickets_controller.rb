@@ -2,7 +2,6 @@ class TicketsController < ApplicationController
   before_filter :find_project
   before_filter :find_ticket, :only => [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, :except => [:index, :show]
-
   def new
     @ticket = @project.tickets.build
   end
