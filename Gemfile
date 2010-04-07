@@ -14,6 +14,7 @@ end
 group :cucumber do
   gem 'cucumber-rails'
   gem 'capybara'
+  gem 'email_spec', :git => "git://github.com/bmabey/email-spec.git", :branch => "rails3"
 end
 
 gem 'devise', '1.1.rc1'
