@@ -14,6 +14,7 @@ Feature: Creating Tickets
     And I fill in "Description" with "My pages are ugly!"
     And I press "Create Ticket"
     Then I should see "Ticket has been created."
+    Then I should see "Created by user@ticketee.com"
 
   Scenario: Creating a ticket without valid attributes fails
     When I press "Create Ticket"
