@@ -15,9 +15,4 @@ Feature: Logging in
 
   Scenario: Logging in via form
     Given "user@ticketee.com" has confirmed their account
-    Given I am on the homepage
-    When I follow "Login"
-    And I fill in "Email" with "user@ticketee.com"
-    And I fill in "Password" with "password"
-    And I press "Sign in"
-    Then I should see "Signed in successfully."
+    And I am logged in as them
