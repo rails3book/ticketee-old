@@ -1,10 +1,13 @@
-Given /^there is a user with the email address "([^\"]*)" and password "([^\"]*)"$/ do |email, password|
-  @user = User.create!(:email => email, :password => password, :password_confirmation => password)
+Given /^there is an? (admin|user) with the email address "([^\"]*)" and password "([^\"]*)"$/ do |admin, email, password|
+  @user = User.new(:email => email, :password => password, :password_confirmation => password)
+  @user.admin = true if admin == "admin"
+  @user.save!
 end
 
 Given /^"([^\"]*)" has confirmed their account$/ do |email|
   User.find_by_email(email).confirm!
 end
+
 Given /^I am logged in as them$/ do
   steps(%Q{
     Given I am on the homepage
