@@ -4,8 +4,11 @@ Feature: Editing Projects
   I want a form to edit the tickets
 
   Background:
+    Given there is a user with the email address "user@ticketee.com" and password "password"
+    Given "user@ticketee.com" has confirmed their account
+    And I am logged in as them
     Given there is a project called "TextMate 2"
-    And that project has a ticket:
+    And "user@ticketee.com" has created a ticket for this project:
       | title           | description                   |
       |  Make it shiny! | Gradients! Starbursts! Oh my! |
     Given I am on the homepage
