@@ -8,8 +8,8 @@
 </head>
 <body>
 
-<%= flash[:notice] %>
-<%= flash[:error] %>
+<%= notice %>
+<%= alert %>
 
 <h1><%= link_to "Ticketee", root_path %></h1>
 <% if !user_signed_in? %>
