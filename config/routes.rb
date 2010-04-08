@@ -7,6 +7,7 @@ Ticketee::Application.routes.draw do |map|
   end
 
   namespace :admin do
+    root :to => "base#index"
     resources :users
   end
 end
