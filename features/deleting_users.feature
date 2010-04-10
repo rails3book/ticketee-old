@@ -12,8 +12,13 @@ Feature: Deleting users
     Given I am on the homepage
     When I follow "Admin"
     And I follow "Users"
-    And I follow "user@ticketee.com"
 
   Scenario: Deleting a user
-    When I follow "Delete"
+    When I follow "user@ticketee.com"
+    And I follow "Delete"
     Then I should see "User has been deleted"
+
+  Scenario: A user cannot delete themselves
+    When I follow "admin@ticketee.com"
+    And I follow "Delete"
+    Then I should see "You cannot delete yourself!"
