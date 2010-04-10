@@ -13,7 +13,6 @@ Feature: Viewing tickets
     And "user@ticketee.com" has created a ticket for this project:
       | title                | description   |
       | Standards compliance | Isn't a joke. |
-
     Given I am on the homepage
 
   Scenario: Viewing tickets for a given project

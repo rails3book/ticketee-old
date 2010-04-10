@@ -3,3 +3,5 @@ capybara*
 db/*.sqlite3
 log/*.log
 tmp/**/*
+rerun.txt
+**/*.swp

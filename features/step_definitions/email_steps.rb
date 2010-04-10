@@ -1,4 +1,5 @@
 require 'email-spec'
+World(EmailSpec::Helpers)
 # Commonly used email steps
 #
 # To add your own steps make a custom_email_steps.rb
@@ -181,5 +182,8 @@ end
 Then /^save and open all raw emails$/ do
   EmailSpec::EmailViewer::save_and_open_all_raw_emails
 end
+<<<<<<< HEAD:features/step_definitions/email_steps.rb
 
 World(EmailSpec::Helpers)
+=======
+>>>>>>> chapter_6:features/step_definitions/email_steps.rb

@@ -10,11 +10,15 @@
 
 <%= notice %>
 <%= alert %>
+
 <h1><%= link_to "Ticketee", root_path %></h1>
 <% if !user_signed_in? %>
   <%= link_to "Signup", new_user_registration_path %>
   <%= link_to "Login", new_user_session_path %>
 <% else %>
+  <%= admins_only do %>
+    <%= link_to "Admin", admin_root_path %>
+  <% end %>
   Signed in as <%= current_user.email %>
 <% end %>
 <%= yield %>

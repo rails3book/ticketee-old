@@ -6,7 +6,7 @@ Feature: Signing up
   Scenario: Signing up
     Given I am on the homepage
     When I follow "Signup"
-    And I fill in "Email" with "user@ticketeeapp.com"
+    And I fill in "Email" with "user@ticketee.com"
     And I fill in "Password" with "password"
     And I fill in "Password confirmation" with "password"
     And I press "Sign up"

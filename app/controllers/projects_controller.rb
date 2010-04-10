@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_filter :authorize_admin!, :except => [:index, :show]
   before_filter :find_project, :only => [:show, :edit, :update, :destroy]
   def index
     @projects = Project.all
@@ -17,6 +18,9 @@ class ProjectsController < ApplicationController
       flash[:alert] = "Project has not been created."
       render :action => "new"
     end
+  end
+
+  def edit
   end
 
   def update

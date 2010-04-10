@@ -1,4 +1,7 @@
-<%= link_to "New Project", new_project_path %>
+<%= admins_only do %>
+  <%= link_to "New Project", new_project_path %>
+<% end %>
+
 <ul>
   <% for project in @projects %>
     <li><%= link_to project.name, project %></li>
