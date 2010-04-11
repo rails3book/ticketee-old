@@ -25,6 +25,10 @@ class Admin::UsersController < Admin::BaseController
     end
   end
 
+  def edit
+
+  end
+
   private
 
     def find_user
