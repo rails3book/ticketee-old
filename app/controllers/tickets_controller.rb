@@ -16,6 +16,10 @@ class TicketsController < ApplicationController
       render :action => "new"
     end
   end
+
+  def show
+
+  end
   private
     def find_project
       @project = Project.find(params[:project_id])
