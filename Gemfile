@@ -16,7 +16,6 @@ group :cucumber do
   gem 'capybara'
 end
 
-gem 'devise', '1.1.rc1'
 # Use unicorn as the web server
 # gem 'unicorn'
 
