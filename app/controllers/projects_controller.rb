@@ -11,10 +11,10 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(params[:project])
     if @project.save
-      #flash[:notice] = "Project has been created."
+      flash[:notice] = "Project has been created."
       redirect_to @project, :flash => { :notice => "Project has been created." }
     else
-      flash[:error] = "Project has not been created."
+      flash[:alert] = "Project has not been created."
       render :action => "new"
     end
   end
@@ -24,7 +24,7 @@ class ProjectsController < ApplicationController
       flash[:notice] = "Project has been updated."
       redirect_to @project
     else
-      flash[:error] = "Project has not been updated."
+      flash[:alert] = "Project has not been updated."
       render :action => "edit"
     end
   end
@@ -39,7 +39,7 @@ class ProjectsController < ApplicationController
     def find_project
       @project = Project.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-      flash[:error] = "The project you were looking for could not be found."
+      flash[:alert] = "The project you were looking for could not be found."
       redirect_to projects_path
     end
 end
