@@ -5,5 +5,9 @@ Ticketee::Application.routes.draw do |map|
   resources :projects do
     resources :tickets
   end
+
+  namespace :admin do
+    resources :users
+  end
 end
 
