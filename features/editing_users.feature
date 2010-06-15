@@ -16,21 +16,22 @@ Feature: Editing a user
    And I follow "Edit"
 
  Scenario: Updating a user's details
-   When I fill in "Email" with "realuser@ticketee.com"
+   When I fill in "Email" with "newguy@ticketee.com"
    And I press "Update User"
    Then I should see "User has been updated."
-   And I should see "realuser@ticketee.com"
+   And I should see "newguy@ticketee.com"
    And I should not see "user@ticketee.com"
 
   Scenario: Toggling a user's admin ability
-    When I check "Admin"
+    When I check "Is an admin?"
     And I press "Update User"
     Then I should see "User has been updated."
-    And I should see "realuser@ticketee.com (Admin)"
+    Then show me the page
+    And I should see "user@ticketee.com (Admin)"
 
 
  Scenario: Updating with an invalid email fails
    When I fill in "Email" with "fakefakefake"
    And I press "Update User"
    Then I should see "User has not been updated."
-   And I should see "Email should be valid."
+   And I should see "Email is invalid"
