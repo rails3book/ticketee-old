@@ -5,7 +5,6 @@ Feature: Editing a user
 
  Background:
    Given there is an admin with the email address "admin@ticketee.com" and password "password"
-   And "admin@ticketee.com" has confirmed their account
    And I am logged in as them
 
    And there is a user with the email address "user@ticketee.com" and password "password"

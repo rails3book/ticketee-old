@@ -5,9 +5,7 @@ Feature: Hidden Links
 
   Background:
     Given there is an user with the email address "user@ticketee.com" and password "password"
-    And "user@ticketee.com" has confirmed their account
     Given there is an admin with the email address "admin@ticketee.com" and password "password"
-    And "admin@ticketee.com" has confirmed their account
     And there is a project called "TextMate 2"
     And I am on the homepage
 

@@ -5,7 +5,6 @@ Feature: Editing Projects
 
   Background:
     Given there is a user with the email address "user@ticketee.com" and password "password"
-    Given "user@ticketee.com" has confirmed their account
     And I am logged in as them
     Given there is a project called "TextMate 2"
     And "user@ticketee.com" has created a ticket for this project:
