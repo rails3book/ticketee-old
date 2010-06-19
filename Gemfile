@@ -18,6 +18,7 @@ group :cucumber do
 end
 
 gem 'devise', '1.1.rc1'
+gem 'cancan'
 
 # Use unicorn as the web server
 # gem 'unicorn'
