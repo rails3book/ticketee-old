@@ -8,7 +8,7 @@ describe Admin::UsersController do
 
   describe "non-admin users" do
     before do
-      login_as(@user)
+      sign_in_as(@user)
     end
 
     it "are not able to access the index action" do

@@ -25,7 +25,6 @@ Feature: Editing a user
     When I check "Is an admin?"
     And I press "Update User"
     Then I should see "User has been updated."
-    Then show me the page
     And I should see "user@ticketee.com (Admin)"
 
 

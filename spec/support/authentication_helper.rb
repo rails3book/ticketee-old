@@ -3,7 +3,7 @@ def stub_warden
   request.env['warden'] = @warden
 end
 
-def login_as(user)
+def sign_in_as(user)
   @warden.should_receive(:authenticate!).with(:scope => :user)
-  controller.stub!(:current_user).and_return(@user)
+  controller.stub!(:current_user).and_return(user)
 end

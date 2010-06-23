@@ -8,7 +8,6 @@ Feature: Signing in
      Given there is an unconfirmed user with the email address "user@ticketee.com" and password "password"
      And "user@ticketee.com" opens the email with subject "Confirmation instructions"
      And they click the first link in the email
-     Then show me the page
      Then I should see "Your account was successfully confirmed"
      Then I should see "Signed in as user@ticketee.com"
 
