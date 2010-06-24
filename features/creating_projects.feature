@@ -5,7 +5,7 @@ Feature: Creating projects
 
   Background:
     Given there is an admin with the email address "admin@ticketee.com" and password "password"
-    And I am logged in as them
+    And I am signed in as them
     Given I am on the homepage
     When I follow "New Project"
 

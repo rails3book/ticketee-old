@@ -16,7 +16,7 @@ Feature: Viewing tickets
 
     And "user@ticketee.com" has permission to view the "TextMate 2" project
     And "user@ticketee.com" has permission to view the "Internet Explorer" project
-    And I am logged in as them
+    And I am signed in as them
     Given I am on the homepage
 
   Scenario: Viewing tickets for a given project

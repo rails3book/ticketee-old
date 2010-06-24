@@ -10,30 +10,30 @@ Feature: Hidden Links
     And "user@ticketee.com" has permission to view the "TextMate 2" project
     And I am on the homepage
 
-  Scenario: New project link is hidden for logged-in users
-    Given I am logged in as "user@ticketee.com"
+  Scenario: New project link is hidden for signed-in users
+    Given I am signed in as "user@ticketee.com"
     Then I should not see the "New Project" link
 
   Scenario: New project link is shown to admins
-    Given I am logged in as "admin@ticketee.com"
+    Given I am signed in as "admin@ticketee.com"
     Then I should see the "New Project" link
 
-  Scenario: Edit project link is hidden for logged-in users
-    Given I am logged in as "user@ticketee.com"
+  Scenario: Edit project link is hidden for signed-in users
+    Given I am signed in as "user@ticketee.com"
     When I follow "TextMate 2"
     Then I should not see the "Edit" link
 
   Scenario: Edit project link is shown to admins
-    Given I am logged in as "admin@ticketee.com"
+    Given I am signed in as "admin@ticketee.com"
     When I follow "TextMate 2"
     Then I should see the "Edit" link
 
-  Scenario: Delete project link is hidden for logged-in users
-    Given I am logged in as "user@ticketee.com"
+  Scenario: Delete project link is hidden for signed-in users
+    Given I am signed in as "user@ticketee.com"
     When I follow "TextMate 2"
     Then I should not see the "Delete" link
 
   Scenario: Delete project link is shown to admins
-    Given I am logged in as "admin@ticketee.com"
+    Given I am signed in as "admin@ticketee.com"
     When I follow "TextMate 2"
     Then I should see the "Delete" link

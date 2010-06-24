@@ -5,7 +5,7 @@ Feature: Editing Projects
 
   Background:
     Given there is an admin with the email address "admin@ticketee.com" and password "password"
-    And I am logged in as them
+    And I am signed in as them
     Given there is a project called "TextMate 2"
     And I am on the homepage
     When I follow "TextMate 2"
