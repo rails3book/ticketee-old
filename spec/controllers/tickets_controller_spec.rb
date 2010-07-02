@@ -11,6 +11,7 @@ describe TicketsController do
 
   context "standard users" do
     it "cannot access a ticket for a project they don't have access to" do
+      sign_in_as(user)
       get :show, :id => ticket.id, :project_id => project.id
       response.should redirect_to(root_path)
       flash[:alert].should eql("The project you were looking for could not be found.")
