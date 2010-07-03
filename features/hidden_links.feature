@@ -7,7 +7,7 @@ Feature: Hidden Links
     Given there is an user with the email address "user@ticketee.com" and password "password"
     Given there is an admin with the email address "admin@ticketee.com" and password "password"
     And there is a project called "TextMate 2"
-    And "user@ticketee.com" has permission to view the "TextMate 2" project
+    And "user@ticketee.com" can view the "TextMate 2" project
     And I am on the homepage
 
   Scenario: New project link is hidden for signed-in users
