@@ -8,7 +8,7 @@ gem 'rails', '3.0.0.beta4'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
 group :test do
-  gem 'rspec-rails', '2.0.0.beta.11'
+  gem 'rspec-rails', '2.0.0.beta.15'
 end
 
 group :cucumber do
@@ -17,7 +17,7 @@ group :cucumber do
   gem 'email_spec', :git => "git://github.com/bmabey/email-spec.git", :branch => "rails3", :require => "email-spec"
 end
 
-gem 'devise', '1.1.rc1'
+gem 'devise', '1.1.rc2'
 
 # Use unicorn as the web server
 # gem 'unicorn'
