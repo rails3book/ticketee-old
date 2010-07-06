@@ -53,4 +53,11 @@ class TicketsController < ApplicationController
     def find_ticket
       @ticket = @project.tickets.find(params[:id])
     end
+
+    def authorize_create!
+      if cannot?(:"create tickets", @project)
+        flash[:alert] = "You are not allowed to create tickets on this project."
+        redirect_to @project
+      end
+    end
 end

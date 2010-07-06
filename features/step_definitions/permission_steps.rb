@@ -3,7 +3,7 @@ Given /^"([^"]*)" can view the "([^"]*)" project$/ do |user, project|
 end
 
 Given /^"([^"]*)" can create tickets on the "([^"]*)" project$/ do |user, project|
-  create_permission(user, find_project(project), "creating tickets")
+  create_permission(user, find_project(project), "create tickets")
 end
 
 def create_permission(email, object, action)
