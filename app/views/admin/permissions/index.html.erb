@@ -1,0 +1,19 @@
+<h2>Permissions for <%= @user.email %></h2>
+<%= form_tag admin_user_permissions_path do %>
+  <table>
+    <thead>
+      <% permissions.each do |_, text| %>
+        <th><%= text %></th>
+      <% end %>
+    </thead>
+    <tbody>
+      <% @projects.each do |project| %>
+        <tr>
+          <% permissions.each do |name, text| %>
+            <td><%= check_box_tag "permissions[#{project.id}][#{name}]", @ability.can?(name.to_sym, project) %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
