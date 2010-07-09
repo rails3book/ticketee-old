@@ -16,8 +16,7 @@ ActiveRecord::Schema.define(:version => 20100718123954) do
     t.integer  "asset_file_size"
     t.string   "asset_content_type"
     t.datetime "asset_updated_at"
-    t.string   "object_type"
-    t.integer  "object_id"
+    t.integer  "ticket_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

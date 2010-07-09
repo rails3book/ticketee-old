@@ -8,5 +8,6 @@ describe Ticket do
                                                    "1" => { :asset => File.open("spec/fixtures/spin.txt") }
                                                  }
                            )
+    ticket.assets.count.should eql(2)
   end
 end

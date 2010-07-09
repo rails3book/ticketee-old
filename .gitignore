@@ -5,3 +5,4 @@ log/*.log
 tmp/**/*
 rerun.txt
 *.swp
+public/system
