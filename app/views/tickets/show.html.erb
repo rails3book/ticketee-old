@@ -6,5 +6,15 @@
 <%= authorized?("delete tickets", @project) do %>
   <%= link_to "Delete", project_ticket_path(@project, @ticket), :method => :delete, :confirm => "Are you sure you want to delete this ticket?" %>
 <% end %>
-Created by <%= @ticket.user.email %>
-<%= simple_format(@ticket.description) %>
+
+<div class='ticket'>
+  Created by <%= @ticket.user.email %>
+  <%= simple_format(@ticket.description) %>
+  
+  <div class="files">
+    <% if @ticket.file.exists? %>
+      <p><%= File.basename(@ticket.file.path) %></p>
+      <small><%= number_to_human_size(@ticket.file.size) %>
+    <% end %>
+  </div>
+</div>

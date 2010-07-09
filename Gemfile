@@ -20,6 +20,7 @@ end
 gem 'devise', '1.1.rc2'
 gem 'cancan'
 
+gem 'paperclip'
 # Use unicorn as the web server
 # gem 'unicorn'
 

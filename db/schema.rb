@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100622122839) do
+ActiveRecord::Schema.define(:version => 20100709170717) do
 
   create_table "permissions", :force => true do |t|
     t.integer  "user_id"
@@ -33,6 +33,10 @@ ActiveRecord::Schema.define(:version => 20100622122839) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "file_file_name"
+    t.integer  "file_file_size"
+    t.string   "file_content_type"
+    t.datetime "file_updated_at"
   end
 
   create_table "users", :force => true do |t|

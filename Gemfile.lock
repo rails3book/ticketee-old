@@ -74,6 +74,9 @@ GEM
       treetop (>= 1.4.5)
     mime-types (1.16)
     nokogiri (1.4.2)
+    paperclip (2.3.3)
+      activerecord
+      activesupport
     polyglot (0.3.1)
     rack (1.1.0)
     rack-mount (0.6.6)
@@ -131,6 +134,7 @@ DEPENDENCIES
   cucumber-rails
   devise (= 1.1.rc2)
   email_spec!
+  paperclip
   rails (= 3.0.0.beta4)
   rspec-rails (= 2.0.0.beta.10)
   sqlite3-ruby
