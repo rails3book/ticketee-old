@@ -9,6 +9,7 @@
     <tbody>
       <% @projects.each do |project| %>
         <tr>
+          <td><%= project.name %></td>
           <% permissions.each do |name, text| %>
             <td><%= check_box_tag "permissions[#{project.id}][#{name}]", 1, @ability.can?(name.to_sym, project) %></td>
           <% end %>
