@@ -1,7 +1,3 @@
-Then /^the title should be "([^\"]*)"$/ do |title|
-  css("title").text.should eql(title)
-end
-
 Then /^I should see the "([^\"]*)" link$/ do |text|
   css("a").detect { |a| a.text == text }.should_not(be_nil,
     "Expected to see the #{text.inspect} link, but did not.")
