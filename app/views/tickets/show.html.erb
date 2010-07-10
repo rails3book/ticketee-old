@@ -12,9 +12,9 @@
   <%= simple_format(@ticket.description) %>
   
   <div class="files">
-    <% if @ticket.file.exists? %>
-      <p><%= File.basename(@ticket.file.path) %></p>
-      <small><%= number_to_human_size(@ticket.file.size) %>
+    <% @ticket.assets.each do |asset| %>
+      <p><%= File.basename(asset.asset.path) %></p>
+      <small><%= number_to_human_size(asset.asset.size) %>
     <% end %>
   </div>
 </div>

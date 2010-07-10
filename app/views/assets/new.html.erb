@@ -1,0 +1,6 @@
+<%= fields_for @asset, :index => params[:number] do |f| %>
+  <p>
+    <%= f.label :file, "File ##{params[:number].to_i + 1}" %>
+    <%= f.file_field :file %>
+  </p>
+<% end %>
