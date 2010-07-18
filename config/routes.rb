@@ -1,4 +1,6 @@
 Ticketee::Application.routes.draw do |map|
+  get "assets/new"
+
   devise_for :users
 
   root :to => "projects#index"
@@ -12,6 +14,8 @@ Ticketee::Application.routes.draw do |map|
       resources :permissions
     end
   end
+
+  resources :assets
 
   match '/admin/users/:user_id/permissions', :to => 'admin/permissions#update', :as => :update_user_permissions
 end

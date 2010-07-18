@@ -41,4 +41,16 @@ Feature: Creating Tickets
     Then I should see "Ticket has been created."
     Then show me the page
     Then I should see "blink_tag.txt" within ".ticket .files" 
+    
+  @javascript
+  Scenario: Creating a ticket with more than one attachment
+    When I fill in "Title" with "Add documentation for blink tag"
+    And I fill in "Description" with "The blink tag has an undocumented speed and spin attributes"
+    And I attach the file "spec/fixtures/speed.txt" to "File #1"
+    And I follow "Add another file"
+    And I attach the file "spec/fixtures/spin.txt" to "File #2"
+    And I press "Create Ticket"
+    Then I should see "Ticket has been created."
+    And I should see "speed.txt" within ".ticket .files"
+    And I should see "spin.txt" within ".ticket .files"
 

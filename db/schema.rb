@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(:version => 20100709170717) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.string   "file_file_name"
-    t.integer  "file_file_size"
-    t.string   "file_content_type"
-    t.datetime "file_updated_at"
+    t.string   "asset_file_name"
+    t.integer  "asset_file_size"
+    t.string   "asset_content_type"
+    t.datetime "asset_updated_at"
   end
 
   create_table "users", :force => true do |t|

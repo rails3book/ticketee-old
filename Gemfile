@@ -12,6 +12,7 @@ group :test do
 end
 
 group :cucumber do
+  gem 'database_cleaner'
   gem 'cucumber-rails'
   gem 'capybara'
   gem 'email_spec', :git => "git://github.com/bmabey/email-spec.git", :branch => "rails3", :require => "email-spec"

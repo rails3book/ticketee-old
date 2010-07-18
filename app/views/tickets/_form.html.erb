@@ -8,9 +8,9 @@
     <%= f.label :description %>
     <%= f.text_area :description %>
   </p>
-  <p>
-    <%= f.label :file %>
-    <%= f.file_field :file %>
-  </p>
+  <div id='files'>
+    <%= render :partial => "assets/new" %>
+  </div>
+  <p><%= link_to_function "Add another file", "add_another_file()" %></p>
   <%= f.submit %>
 <% end %>

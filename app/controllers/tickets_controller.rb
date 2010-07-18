@@ -12,6 +12,7 @@ class TicketsController < ApplicationController
 
   def new
     @ticket = @project.tickets.build
+    @asset = Asset.new
   end
 
   def create
@@ -58,21 +59,21 @@ class TicketsController < ApplicationController
     end
 
     def authorize_create!
-      if cannot?(:"create tickets", @project)
+      if !current_user.admin? && cannot?(:"create tickets", @project)
         flash[:alert] = "You are not allowed to create tickets on this project."
         redirect_to @project
       end
     end
 
     def authorize_update!
-      if cannot?(:"edit tickets", @project)
+      if !current_user.admin? && cannot?(:"edit tickets", @project)
         flash[:alert] = "You are not allowed to edit tickets on this project."
         redirect_to @project
       end
     end
 
     def authorize_delete!
-      if cannot?(:"delete tickets", @project)
+      if !current_user.admin? && cannot?(:"delete tickets", @project)
         flash[:alert] = "You are not allowed to delete tickets from this project."
         redirect_to @project
       end
