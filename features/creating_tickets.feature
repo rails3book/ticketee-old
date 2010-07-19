@@ -36,11 +36,11 @@ Feature: Creating Tickets
   Scenario: Creating a ticket with an attachment
     When I fill in "Title" with "Add documentation for blink tag"
     And I fill in "Description" with "The blink tag has an undocumented speed attribute"
-    And I attach the file "spec/fixtures/blink_tag.txt" to "File"
+    And I attach the file "spec/fixtures/speed.txt" to "File"
     And I press "Create Ticket"
     Then I should see "Ticket has been created."
     Then show me the page
-    Then I should see "blink_tag.txt" within ".ticket .files" 
+    Then I should see "speed.txt" within ".ticket .files" 
     
   @javascript
   Scenario: Creating a ticket with more than one attachment

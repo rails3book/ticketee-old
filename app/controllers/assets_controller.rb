@@ -1,7 +1,7 @@
 class AssetsController < ApplicationController
   def new
     @asset = Asset.new
-    render :layout => false
+    render :partial => "new", :layout => false
   end
 
 end
