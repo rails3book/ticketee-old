@@ -39,7 +39,6 @@ Feature: Creating Tickets
     And I attach the file "spec/fixtures/speed.txt" to "File"
     And I press "Create Ticket"
     Then I should see "Ticket has been created."
-    Then show me the page
     Then I should see "speed.txt" within ".ticket .files" 
     
   @javascript
