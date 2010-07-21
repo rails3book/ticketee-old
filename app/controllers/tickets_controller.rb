@@ -12,11 +12,10 @@ class TicketsController < ApplicationController
 
   def new
     @ticket = @project.tickets.build
-    @asset = @ticket.assets.build
+    @ticket.assets.build
   end
 
   def create
-    pp params
     @ticket = @project.tickets.build(params[:ticket].merge!(:user => current_user))
     if @ticket.save
       flash[:notice] = "Ticket has been created."

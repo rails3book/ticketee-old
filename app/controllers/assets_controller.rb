@@ -1,6 +1,7 @@
 class AssetsController < ApplicationController
   def new
-    @asset = Asset.new
+    @ticket = Ticket.new
+    @ticket.assets.build
     render :partial => "new", :layout => false
   end
 
