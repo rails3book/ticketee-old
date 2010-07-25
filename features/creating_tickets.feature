@@ -40,6 +40,11 @@ Feature: Creating Tickets
     And I press "Create Ticket"
     Then I should see "Ticket has been created."
     Then I should see "speed.txt" within ".ticket .files" 
+    When I follow "speed.txt"
+    Then the downloaded file should contain:
+      """
+        The blink tag can blink faster if you use the speed="hyper" attribute.
+      """
     
   @javascript
   Scenario: Creating a ticket with more than one attachment

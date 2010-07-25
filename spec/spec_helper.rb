@@ -22,3 +22,14 @@ RSpec.configure do |config|
   # uncomment the following line.
   # config.use_transactional_examples false
 end
+
+# Useful for finding leftover puts/p
+# def puts str
+#   super caller.first if caller.first.index("shoulda.rb") == -1
+#   super str
+# end
+# 
+# def p obj
+#   puts caller.first
+#   super obj
+# end
