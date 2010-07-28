@@ -103,16 +103,16 @@ GEM
     rack-test (0.5.4)
       rack (>= 1.0)
     rake (0.8.7)
-    rspec (2.0.0.beta.10)
-      rspec-core (= 2.0.0.beta.10)
-      rspec-expectations (= 2.0.0.beta.10)
-      rspec-mocks (= 2.0.0.beta.10)
-    rspec-core (2.0.0.beta.10)
-    rspec-expectations (2.0.0.beta.10)
+    rspec (2.0.0.beta.18)
+      rspec-core (= 2.0.0.beta.18)
+      rspec-expectations (= 2.0.0.beta.18)
+      rspec-mocks (= 2.0.0.beta.18)
+    rspec-core (2.0.0.beta.18)
+    rspec-expectations (2.0.0.beta.18)
       diff-lcs (>= 1.1.2)
-    rspec-mocks (2.0.0.beta.10)
-    rspec-rails (2.0.0.beta.10)
-      rspec (= 2.0.0.beta.10)
+    rspec-mocks (2.0.0.beta.18)
+    rspec-rails (2.0.0.beta.18)
+      rspec (>= 2.0.0.beta.14)
       webrat (>= 0.7.0)
     rubyzip (0.9.4)
     selenium-webdriver (0.0.27)
@@ -145,5 +145,5 @@ DEPENDENCIES
   email_spec!
   paperclip
   rails!
-  rspec-rails (= 2.0.0.beta.10)
+  rspec-rails (= 2.0.0.beta.18)
   sqlite3-ruby
