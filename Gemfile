@@ -8,7 +8,7 @@ gem 'rails', '3.0.0.rc'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
 group :test do
-  gem 'rspec-rails', '2.0.0.beta.18'
+  gem 'rspec-rails', '2.0.0.beta.19'
 end
 
 group :cucumber do
@@ -18,7 +18,7 @@ group :cucumber do
   gem 'email_spec', :git => "git://github.com/bmabey/email-spec.git", :branch => "rails3", :require => "email-spec"
 end
 
-gem 'devise', '1.1.rc2'
+gem 'devise', '1.1.1'
 gem 'cancan'
 
 gem 'paperclip'
