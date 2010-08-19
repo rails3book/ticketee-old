@@ -12,7 +12,7 @@ class TicketsController < ApplicationController
 
   def new
     @ticket = @project.tickets.build
-    @ticket.assets.build
+    3.times { @ticket.assets.build }
   end
 
   def create

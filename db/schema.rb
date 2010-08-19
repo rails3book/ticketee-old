@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100718123954) do
+ActiveRecord::Schema.define(:version => 20100814103201) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(:version => 20100718123954) do
     t.integer  "ticket_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "comments", :force => true do |t|
+    t.text     "text"
+    t.integer  "ticket_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "previous_state_id"
+    t.integer  "state_id"
   end
 
   create_table "permissions", :force => true do |t|
@@ -37,6 +47,10 @@ ActiveRecord::Schema.define(:version => 20100718123954) do
     t.datetime "updated_at"
   end
 
+  create_table "states", :force => true do |t|
+    t.string "name"
+  end
+
   create_table "tickets", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -45,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20100718123954) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.datetime "asset_updated_at"
+    t.integer  "state_id"
   end
 
   create_table "users", :force => true do |t|

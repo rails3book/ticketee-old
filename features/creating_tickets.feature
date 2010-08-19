@@ -36,25 +36,36 @@ Feature: Creating Tickets
   Scenario: Creating a ticket with an attachment
     When I fill in "Title" with "Add documentation for blink tag"
     And I fill in "Description" with "The blink tag has an undocumented speed attribute"
-    And I attach the file "spec/fixtures/speed.txt" to "File"
+    And I attach the file "spec/fixtures/speed.txt" to "File #1"
+    # And I attach the file "spec/fixtures/spin.txt" to "File #2"
+    # And I attach the file "spec/fixtures/gradient.txt" to "File #3"
     And I press "Create Ticket"
     Then I should see "Ticket has been created."
-    Then I should see "speed.txt" within ".ticket .files" 
+    Then I should see "speed.txt" within "#ticket .files" 
     When I follow "speed.txt"
     Then the downloaded file should contain:
       """
         The blink tag can blink faster if you use the speed="hyper" attribute.
       """
+    When I follow "spin.txt"
+    Then the downloaded file should contain:
+      """
+        Spinning blink tags have a 200% higher click rate!
+      """
+    When I follow "gradient.txt"
+      """
+        Everything looks better with a gradient!
+      """
     
-  @javascript
-  Scenario: Creating a ticket with more than one attachment
-    When I fill in "Title" with "Add documentation for blink tag"
-    And I fill in "Description" with "The blink tag has an undocumented speed and spin attributes"
-    And I attach the file "spec/fixtures/speed.txt" to "File #1"
-    And I follow "Add another file"
-    And I attach the file "spec/fixtures/spin.txt" to "File #2"
-    And I press "Create Ticket"
-    Then I should see "Ticket has been created."
-    And I should see "speed.txt" within ".ticket .files"
-    And I should see "spin.txt" within ".ticket .files"
+  # @javascript
+  # Scenario: Creating a ticket with more than one attachment
+  #   When I fill in "Title" with "Add documentation for blink tag"
+  #   And I fill in "Description" with "The blink tag has an undocumented speed and spin attributes"
+  #   And I attach the file "spec/fixtures/speed.txt" to "File #1"
+  #   And I follow "Add another file"
+  #   And I attach the file "spec/fixtures/spin.txt" to "File #2"
+  #   And I press "Create Ticket"
+  #   Then I should see "Ticket has been created."
+  #   And I should see "speed.txt" within ".ticket .files"
+  #   And I should see "spin.txt" within ".ticket .files"
 
