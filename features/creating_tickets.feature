@@ -41,21 +41,9 @@ Feature: Creating Tickets
     And I attach the file "spec/fixtures/gradient.txt" to "File #3"
     And I press "Create Ticket"
     Then I should see "Ticket has been created."
-    Then I should see "speed.txt" within "#ticket .files" 
-    When I follow "speed.txt"
-    Then the downloaded file should contain:
-      """
-        The blink tag can blink faster if you use the speed="hyper" attribute.
-      """
-    When I follow "spin.txt"
-    Then the downloaded file should contain:
-      """
-        Spinning blink tags have a 200% higher click rate!
-      """
-    When I follow "gradient.txt"
-      """
-        Everything looks better with a gradient!
-      """
+    And I should see "speed.txt" within "#ticket .files" 
+    And I should see "spin.txt" within "#ticket .files"
+    And I should see "gradient.txt" within "#ticket .files"
     
   # @javascript
   # Scenario: Creating a ticket with more than one attachment
