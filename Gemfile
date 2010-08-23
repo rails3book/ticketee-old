@@ -19,7 +19,7 @@ group :cucumber do
   gem 'launchy'
 end
 
-gem 'devise', '1.1.1'
+gem 'devise'
 gem 'cancan'
 
 gem 'paperclip'

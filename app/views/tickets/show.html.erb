@@ -11,11 +11,14 @@
   Created by <%= @ticket.user.email %>
   <%= simple_format(@ticket.description) %>
   
-  <h3>Assets</h3>
-  <div class="assets">
-    <% @ticket.assets.each do |asset| %>
-    <p><%= link_to File.basename(asset.asset_file_name), asset.asset.url %></p>
-      <small><%= number_to_human_size(asset.asset.size) %></small>
-    <% end %>
-  </div>
+  
+  <% if !@ticket.assets.empty? %>
+    <h3>Assets</h3>
+    <div class="assets">
+      <% @ticket.assets.each do |asset| %>
+      <p><%= link_to File.basename(asset.asset_file_name), asset.asset.url %></p>
+        <p><small><%= number_to_human_size(asset.asset.size) %></small></p>
+      <% end %>
+    </div>
+  <% end %>
 </div>
