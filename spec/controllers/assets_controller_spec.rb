@@ -3,15 +3,9 @@ require 'spec_helper'
 describe AssetsController do
   let(:project) { Project.create(:name => "Ticketee") }
   
-  let(:good_user) do
-    User.create(:email => "user@ticketee.com",
-                :password => "password") 
-  end
+  let(:good_user) { create_user! } 
   
-  let(:bad_user) do
-    User.create(:email => "other_user@ticketee.com",
-                :password => "other_password")
-  end
+  let(:bad_user) { create_user!(:email => "other_user@ticketee.com") }
   
   let(:ticket) do
     project.tickets.create(:title => "File attachment",
@@ -25,7 +19,7 @@ describe AssetsController do
   end
   
   before do
-    good_user.permissions.create!(:action => "read", :object => @project)
+    good_user.permissions.create!(:action => "read", :object => project)
   end
   
   context "users with access" do

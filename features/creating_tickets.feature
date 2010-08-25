@@ -44,6 +44,11 @@ Feature: Creating Tickets
     And I should see "speed.txt" within "#ticket .files" 
     And I should see "spin.txt" within "#ticket .files"
     And I should see "gradient.txt" within "#ticket .files"
+    When I follow "speed.txt"
+    Then the downloaded file should contain:
+      """
+        The blink tag can blink faster if you use the speed="hyper" attribute.
+      """
     
   # @javascript
   # Scenario: Creating a ticket with more than one attachment

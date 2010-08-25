@@ -3,6 +3,7 @@ module ApplicationHelper
     if current_user && current_user.admin?
       block.call
     end
+    nil
   end
 
 
@@ -10,6 +11,7 @@ module ApplicationHelper
     if can?(permission.to_sym, object) || (current_user && current_user.admin?)
       block.call
     end
+    nil
   end
       
  

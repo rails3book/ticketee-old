@@ -6,7 +6,7 @@
 <% end %>
 
 <%= authorized?(:"create tickets", @project) do %>
-  <% link_to "New Ticket", new_project_ticket_path(@project) %>
+  <%= link_to "New Ticket", new_project_ticket_path(@project) %>
 <% end %>
 
 <ul>
