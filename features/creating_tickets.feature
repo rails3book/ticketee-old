@@ -41,9 +41,9 @@ Feature: Creating Tickets
     And I attach the file "spec/fixtures/gradient.txt" to "File #3"
     And I press "Create Ticket"
     Then I should see "Ticket has been created."
-    And I should see "speed.txt" within "#ticket .files" 
-    And I should see "spin.txt" within "#ticket .files"
-    And I should see "gradient.txt" within "#ticket .files"
+    And I should see "speed.txt" within "#ticket .assets" 
+    And I should see "spin.txt" within "#ticket .assets"
+    And I should see "gradient.txt" within "#ticket .assets"
     When I follow "speed.txt"
     Then the downloaded file should contain:
       """
