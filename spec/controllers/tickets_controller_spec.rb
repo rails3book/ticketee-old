@@ -32,7 +32,7 @@ describe TicketsController do
         flash[:alert].should eql("You are not allowed to edit tickets on this project.")
       end
         
-      it "cannot begin to create a ticket without permission" do       
+      it "cannot begin to create a ticket without permission" do
         get :new, :project_id => project.id
         cannot_create_tickets!
       end
