@@ -14,6 +14,9 @@ Feature: Viewing tickets
       | title                | description   |
       | Standards compliance | Isn't a joke. |
 
+    And "user@ticketee.com" can view the "TextMate 2" project
+    And "user@ticketee.com" can view the "Internet Explorer" project
+    And I am signed in as them
     Given I am on the homepage
 
   Scenario: Viewing tickets for a given project

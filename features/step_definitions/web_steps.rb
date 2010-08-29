@@ -92,6 +92,7 @@ end
 
 When /^(?:|I )attach the file "([^\"]*)" to "([^\"]*)"(?: within "([^\"]*)")?$/ do |path, field, selector|
   with_scope(selector) do
+    # attach_file(field, Rails.root + Pathname.new(path))
     attach_file(field, path)
   end
 end
@@ -198,5 +199,6 @@ Then /^(?:|I )should have the following query string:$/ do |expected_pairs|
 end
 
 Then /^show me the page$/ do
-  puts body
+  p body
+  save_and_open_page
 end

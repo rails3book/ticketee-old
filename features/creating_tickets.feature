@@ -4,17 +4,14 @@ Feature: Creating Tickets
   I want to be able to select a project and do that
 
   Background:
-    Given there is a project called "Internet Explorer"
-    And there is a user with the email address "user@ticketee.com" and password "password"
-    And "user@ticketee.com" has confirmed their account
-    And I am on the homepage
-    When I follow "Internet Explorer"
-    And I follow "New Ticket"
-    Then I should see "You need to sign in or sign up before continuing."
-    When I fill in "Email" with "user@ticketee.com"
-    And I fill in "Password" with "password"
-    And I press "Sign in"
-    Then I should see "New Ticket"
+  Given there is a project called "Internet Explorer"
+  And there is a user with the email address "user@ticketee.com" and password "password"
+  And "user@ticketee.com" can view the "Internet Explorer" project
+  And "user@ticketee.com" can create tickets on the "Internet Explorer" project
+  And I am signed in as them
+  And I am on the homepage
+  When I follow "Internet Explorer"
+  And I follow "New Ticket"
 
   Scenario: Creating a ticket
     When I fill in "Title" with "Non-standards compliance"
@@ -35,3 +32,33 @@ Feature: Creating Tickets
     And I press "Create Ticket"
     Then I should see "Ticket has not been created."
     And I should see "Description is too short (minimum is 10 characters)"
+
+  Scenario: Creating a ticket with an attachment
+    When I fill in "Title" with "Add documentation for blink tag"
+    And I fill in "Description" with "The blink tag has an undocumented speed attribute"
+    And I attach the file "spec/fixtures/speed.txt" to "File #1"
+    And I attach the file "spec/fixtures/spin.txt" to "File #2"
+    And I attach the file "spec/fixtures/gradient.txt" to "File #3"
+    And I press "Create Ticket"
+    Then I should see "Ticket has been created."
+    And I should see "speed.txt" within "#ticket .assets" 
+    And I should see "spin.txt" within "#ticket .assets"
+    And I should see "gradient.txt" within "#ticket .assets"
+    When I follow "speed.txt"
+    Then the downloaded file should contain:
+      """
+        The blink tag can blink faster if you use the speed="hyper" attribute.
+      """
+    
+  # @javascript
+  # Scenario: Creating a ticket with more than one attachment
+  #   When I fill in "Title" with "Add documentation for blink tag"
+  #   And I fill in "Description" with "The blink tag has an undocumented speed and spin attributes"
+  #   And I attach the file "spec/fixtures/speed.txt" to "File #1"
+  #   And I follow "Add another file"
+  #   And I attach the file "spec/fixtures/spin.txt" to "File #2"
+  #   And I press "Create Ticket"
+  #   Then I should see "Ticket has been created."
+  #   And I should see "speed.txt" within ".ticket .files"
+  #   And I should see "spin.txt" within ".ticket .files"
+

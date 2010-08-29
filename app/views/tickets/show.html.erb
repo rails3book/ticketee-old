@@ -1,5 +1,24 @@
 <h2><%= @ticket.title %></h2>
-<%= link_to "Edit", edit_project_ticket_path(@project, @ticket) %>
-<%= link_to "Delete", project_ticket_path(@project, @ticket), :method => :delete, :confirm => "Are you sure you want to delete this ticket?" %>
-Created by <%= @ticket.user.email %>
-<%= simple_format(@ticket.description) %>
+<%= authorized?("edit tickets", @project) do %>
+  <%= link_to "Edit", edit_project_ticket_path(@project, @ticket) %>
+<% end %>
+
+<%= authorized?("delete tickets", @project) do %>
+  <%= link_to "Delete", project_ticket_path(@project, @ticket), :method => :delete, :confirm => "Are you sure you want to delete this ticket?" %>
+<% end %>
+
+<div id='ticket'>
+  Created by <%= @ticket.user.email %>
+  <%= simple_format(@ticket.description) %>
+  
+  
+  <% if !@ticket.assets.empty? %>
+    <h3>Assets</h3>
+    <div class="assets">
+      <% @ticket.assets.each do |asset| %>
+      <p><%= link_to File.basename(asset.asset_file_name), asset.asset.url %></p>
+        <p><small><%= number_to_human_size(asset.asset.size) %></small></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
