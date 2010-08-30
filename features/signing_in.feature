@@ -1,4 +1,4 @@
-Feature: Logging in
+Feature: Signing in
   In order to use the site
   As a user
   I want to be able to log in
@@ -13,6 +13,6 @@ Feature: Logging in
     Then I should see "Your account was successfully confirmed"
     Then I should see "Signed in as user@ticketee.com"
 
-  Scenario: Logging in via form
+  Scenario: Signing in via form
     Given "user@ticketee.com" has confirmed their account
-    And I am logged in as them
+    And I am signed in as them
