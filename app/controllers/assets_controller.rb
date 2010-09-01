@@ -1,6 +1,14 @@
 class AssetsController < ApplicationController
   before_filter :authenticate_user!
   
+  def new
+    @ticket = Ticket.new
+    asset = @ticket.assets.build
+    render :partial => "assets/form", 
+           :locals => { :number => params[:number].to_i,
+                        :asset => asset }
+  end
+  
   def show
     asset = Asset.find(params[:id])
     if can?(:read, asset.ticket.project)
