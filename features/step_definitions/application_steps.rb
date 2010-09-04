@@ -11,3 +11,7 @@ end
 def css(selector)
   Nokogiri::HTML(body).css(selector)
 end
+
+When /^I wait (\d+) seconds$/ do |num|
+  sleep(num.to_i)
+end

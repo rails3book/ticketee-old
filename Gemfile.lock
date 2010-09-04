@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/bmabey/email-spec.git
-  revision: e197a167a3f89cba6848ba144e342537e1cf64ab
+  revision: e197a16
   branch: rails3
   specs:
     email_spec (0.6.2)

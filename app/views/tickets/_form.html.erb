@@ -10,8 +10,12 @@
   </p>
   <% number = 0 %>
   <div id='files'>
-    <%= render :partial => "assets/form", :locals => { :number => number,
-                                                       :ticket => @ticket } %>
+    <%= f.fields_for :assets do |asset| %>
+      <p>
+        <%= asset.label :asset, "File ##{number += 1}" %>
+        <%= asset.file_field :asset %>
+      </p>
+    <% end %>
   </div>
   <%= link_to_remote "Add another file", :url => new_asset_path,
                                          :update => "files",
