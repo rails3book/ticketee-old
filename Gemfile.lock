@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/bmabey/email-spec.git
-  revision: e197a16
+  revision: e197a167a3f89cba6848ba144e342537e1cf64ab
   branch: rails3
   specs:
     email_spec (0.6.2)
@@ -39,7 +39,7 @@ GEM
       activesupport (~> 3.0.0)
     bcrypt-ruby (2.1.2)
     builder (2.1.2)
-    cancan (1.3.3)
+    cancan (1.3.4)
     capybara (0.3.9)
       culerity (>= 0.2.4)
       mime-types (>= 1.16)
@@ -84,7 +84,7 @@ GEM
       activesupport
     polyglot (0.3.1)
     rack (1.2.1)
-    rack-mount (0.6.12)
+    rack-mount (0.6.13)
       rack (>= 1.0.0)
     rack-test (0.5.4)
       rack (>= 1.0)
@@ -145,5 +145,5 @@ DEPENDENCIES
   launchy
   paperclip
   rails (= 3.0.0)
-  rspec-rails (= 2.0.0.beta.19)
+  rspec-rails (~> 2.0.0.beta.19)
   sqlite3-ruby
