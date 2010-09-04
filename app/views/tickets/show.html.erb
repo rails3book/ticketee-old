@@ -11,7 +11,6 @@
   Created by <%= @ticket.user.email %>
   <%= simple_format(@ticket.description) %>
   
-  <%= debug @ticket.assets %>
   <% if !@ticket.assets.empty? %>
     <h3>Assets</h3>
     <div class="assets">
