@@ -40,7 +40,6 @@ Feature: Creating Tickets
     And I attach the file "spec/fixtures/speed.txt" to "File #1"
     And I follow "Add another file"
     And I attach the file "spec/fixtures/spin.txt" to "File #2"
-    And I wait 30 seconds
     And I press "Create Ticket"
     Then I should see "Ticket has been created."
     And I should see "speed.txt" within "#ticket .assets"
