@@ -3,6 +3,7 @@ class Ticket < ActiveRecord::Base
   belongs_to :user
   
   has_many :assets
+  has_many :comments
   accepts_nested_attributes_for :assets, :reject_if => proc { |asset| asset["asset"].blank? } 
 
   validates :title, :presence => true

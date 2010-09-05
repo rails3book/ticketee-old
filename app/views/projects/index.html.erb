@@ -2,7 +2,7 @@
   <%= link_to "New Project", new_project_path %>
 <% end %>
 
-<ul>
+<ul id='projects'>
   <% for project in @projects %>
     <li><%= link_to project.name, project %></li>
   <% end %>

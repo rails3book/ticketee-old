@@ -21,3 +21,10 @@
     </div>
   <% end %>
 </div>
+
+<h3>Comments</h3>
+<div id='comments'>
+  <%= render @ticket.comments %>
+</div>
+
+<%= render "comments/form" %>
