@@ -17,11 +17,12 @@
       </p>
     <% end %>
   </div>
-  <%= link_to_remote "Add another file", :url => new_asset_path,
-                                         :update => "files",
-                                         :position => "bottom",
-                                         :method => :get,
-                                         :with => "'number=' + $$('div#files input').length" %>
+  <%= link_to "Add another file", new_asset_path,
+                                  :remote => true,
+                                  :update => "files",
+                                  :position => "bottom",
+                                  :method => :get,
+                                  :with => "'number=' + $$('div#files input').length" %>
   <br>
   <%= f.submit %>
 <% end %>
