@@ -9,11 +9,19 @@
     <%= f.text_area :description %>
   </p>
   <% number = 0 %>
-  <%= f.fields_for :assets do |asset| %>
-    <p>
-      <%= asset.label :asset, "File ##{number += 1}" %>
-      <%= asset.file_field :asset %>
-    </p>
-  <% end %>
+  <div id='files'>
+    <%= f.fields_for :assets do |asset| %>
+      <p>
+        <%= asset.label :asset, "File ##{number += 1}" %>
+        <%= asset.file_field :asset %>
+      </p>
+    <% end %>
+  </div>
+  <%= link_to_remote "Add another file", :url => new_asset_path,
+                                         :update => "files",
+                                         :position => "bottom",
+                                         :method => :get,
+                                         :with => "'number=' + $$('div#files input').length" %>
+  <br>
   <%= f.submit %>
 <% end %>
