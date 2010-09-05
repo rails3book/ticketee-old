@@ -9,6 +9,7 @@
 
 <div id='ticket'>
   Created by <%= @ticket.user.email %>
+  <span id='state'><%= @ticket.state %></span>
   <%= simple_format(@ticket.description) %>
   
   <% if !@ticket.assets.empty? %>
