@@ -16,7 +16,6 @@ Feature: Creating comments
     Given there is a state called "Open"
 
   Scenario: Creating a comment
-    Given "user@ticketee.com" can create comments on the "Ticketee" project
     When I follow "Change a ticket's state"
     And I fill in "Text" with "Added the ability to create a comment."
     And I press "Create Comment"
@@ -24,7 +23,6 @@ Feature: Creating comments
     Then I should see "Added the ability to create a comment." within "#comments"
 
   Scenario: Creating an invalid comment
-    Given "user@ticketee.com" can create comments on the "Ticketee" project
     When I follow "Change a ticket's state"
     And I press "Create Comment"
     Then I should see "Comment has not been created."
