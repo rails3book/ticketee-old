@@ -12,6 +12,7 @@ Feature: Assigning permissions
     And "user@ticketee.com" has created a ticket for this project:
       | title  | description       |
       | Shiny! | Eye-blindingly so |
+    Given there is a state called "Open"
  
     And there is a project called "Internet Explorer"
  
@@ -69,5 +70,21 @@ Feature: Assigning permissions
     And I follow "Shiny!"
     And I follow "Delete"
     Then I should see "Ticket has been deleted."
+    
+  Scenario: Changing states for a ticket 
+    When I check "Read" for "TextMate 2"
+    And I check "Change States" for "TextMate 2"
+    And I press "Update"
+    And I follow "Sign out"
+    
+    Given I am signed in as "user@ticketee.com"
+    When I follow "TextMate 2"
+    And I follow "Shiny!"
+    Then I should see "" within "#ticket #state"
+    When I fill in "Text" with "Opening this ticket."
+    And I select "Open" from "State"
+    And I press "Create Comment"
+    Then I should see "Comment has been created."
+    And I should see "Open" within "#ticket #state"
 
     

@@ -6,6 +6,7 @@
     Scenario: The basics
       Given I have run the seed task
       And I am signed in as "admin@ticketee.com"
+      And "admin@ticketee.com" can change states on the "Ticketee Beta" project
       When I follow "Ticketee Beta"
       And I follow "New Ticket"
       And I fill in "Title" with "Comments with state"

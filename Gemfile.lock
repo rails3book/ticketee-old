@@ -140,6 +140,5 @@ DEPENDENCIES
   launchy
   paperclip
   rails (= 3.0.0)
-  rspec (~> 2.0.0.beta.19)
   rspec-rails (~> 2.0.0.beta.19)
   sqlite3-ruby

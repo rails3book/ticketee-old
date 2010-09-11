@@ -15,3 +15,7 @@ end
 When /^I wait (\d+) seconds$/ do |num|
   sleep(num.to_i)
 end
+
+Then /^I should not see the "([^"]*)" element$/ do |css|
+  find(:css, css).should(be_nil, "Found #{css} but was expecting not to.")
+end
