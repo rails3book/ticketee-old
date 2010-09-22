@@ -1,5 +1,3 @@
-<div class='state' style='background:<%= state.background %>'>
-  <span style='color:<%= state.foreground %>'>
-    <%= state %>
-  </span>
+<div class='state state_<%= state.name.parameterize %>'>
+  <%= state %>
 </div>
