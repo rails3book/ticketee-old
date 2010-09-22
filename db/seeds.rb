@@ -3,5 +3,6 @@ admin_user.admin = true
 admin_user.confirm!
 
 Project.create!(:name => "Ticketee Beta")
-
-%w(New Open Closed).each { |name| State.create!(:name => name) }
+State.create(:name => "New", 
+                       :background => "#85FF00",
+                       :foreground => "white")

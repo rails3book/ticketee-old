@@ -1,17 +1,19 @@
-<h2><%= @ticket.title %></h2>
-<%= authorized?("edit tickets", @project) do %>
-  <%= link_to "Edit", edit_project_ticket_path(@project, @ticket) %>
-<% end %>
-
-<%= authorized?("delete tickets", @project) do %>
-  <%= link_to "Delete", project_ticket_path(@project, @ticket), :method => :delete, :confirm => "Are you sure you want to delete this ticket?" %>
-<% end %>
-
 <div id='ticket'>
-  Created by <%= @ticket.user.email %>
-  <span id='state'><%= @ticket.state %></span>
-  <%= simple_format(@ticket.description) %>
+  <h2><%= @ticket.title %></h2>
+  <menu>
+    <%= authorized?("edit tickets", @project) do %>
+      <%= link_to "Edit", edit_project_ticket_path(@project, @ticket) %>
+    <% end %>
   
+    <%= authorized?("delete tickets", @project) do %>
+      <%= link_to "Delete", project_ticket_path(@project, @ticket), :method => :delete, :confirm => "Are you sure you want to delete this ticket?" %>
+    <% end %>
+  </menu>
+  <section>
+    <small>Created by <%= @ticket.user.email %></small>
+    <%= render :partial => @ticket.state if @ticket.state %>
+    <%= simple_format(@ticket.description) %>
+  </section> 
   <% if !@ticket.assets.empty? %>
     <h3>Assets</h3>
     <div class="assets">

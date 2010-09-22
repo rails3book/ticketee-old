@@ -1,8 +1,9 @@
 class CreateStates < ActiveRecord::Migration
   def self.up
-    drop_table :states
     create_table :states do |t|
       t.string :name
+      t.string :foreground
+      t.string :background
     end
 
     add_column :tickets, :state_id, :integer

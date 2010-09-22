@@ -6,7 +6,7 @@
   </p>
   
   
-  <% if can?(:"change states", @project) %>
+  <% if can?(:"change states", @project) || current_user.admin? %>
     <p>
       <%= f.label :state_id %>
       <%= f.select :state_id, @states.map { |s| [s.name, s.id] },

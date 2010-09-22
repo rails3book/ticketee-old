@@ -11,17 +11,18 @@
 <%= notice %>
 <%= alert %>
 <h1><%= link_to "Ticketee", root_path %></h1>
-
-<% if !user_signed_in? %>
-  <%= link_to "Sign up", new_user_registration_path %>
-  <%= link_to "Sign in", new_user_session_path %>
-<% else %>
-  <%= admins_only do %>
-    <%= link_to "Admin", admin_root_path %>
+<nav>
+  <% if !user_signed_in? %>
+    <%= link_to "Sign up", new_user_registration_path %>
+    <%= link_to "Sign in", new_user_session_path %>
+  <% else %>
+    <%= admins_only do %>
+      <%= link_to "Admin", admin_root_path %>
+    <% end %>
+    Signed in as <%= current_user.email %>
+    <%= link_to "Sign out", destroy_user_session_path %> 
   <% end %>
-  Signed in as <%= current_user.email %>
-  <%= link_to "Sign out", destroy_user_session_path %> 
-<% end %>
+</nav>
 <%= yield %>
 
 </body>

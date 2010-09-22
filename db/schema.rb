@@ -49,7 +49,9 @@ ActiveRecord::Schema.define(:version => 20100907085759) do
 
   create_table "states", :force => true do |t|
     t.string  "name"
-    t.boolean "default", :default => false
+    t.string  "foreground"
+    t.string  "background"
+    t.boolean "default",    :default => false
   end
 
   create_table "tickets", :force => true do |t|
@@ -62,6 +64,8 @@ ActiveRecord::Schema.define(:version => 20100907085759) do
     t.datetime "asset_updated_at"
     t.integer  "state_id"
   end
+
+  add_index "tickets", ["state_id"], :name => "index_tickets_on_state_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "",    :null => false
