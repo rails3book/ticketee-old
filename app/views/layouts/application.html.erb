@@ -3,6 +3,14 @@
 <head>
   <title><%= @title || "Ticketee" %></title>
   <%= stylesheet_link_tag :all %>
+  <style>
+    <% for state in @states %>
+      .state-<%= state.name.parameterize %> {
+        background: <%= state.background %>;
+        color: <%= state.color %>;
+      }
+    <% end %>
+  </style>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
