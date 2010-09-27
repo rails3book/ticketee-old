@@ -1,16 +1,22 @@
 <% @title = "Show - Projects - Ticketee" %>
 <h1><%= @project.name %></h1>
-<%= admins_only do %>
-  <%= link_to "Edit", edit_project_path(@project) %>
-  <%= link_to "Delete", project_path(@project), :method => :delete, :confirm => "Are you sure you want to delete this project?" %>
-<% end %>
+<menu>
+  <%= admins_only do %>
+    <%= link_to "Edit Project", edit_project_path(@project) %><br>
+    <%= link_to "Delete Project", project_path(@project), :method => :delete, :confirm => "Are you sure you want to delete this project?" %>
+  <% end %>
+</menu>
 
 <%= authorized?(:"create tickets", @project) do %>
   <%= link_to "New Ticket", new_project_ticket_path(@project) %>
 <% end %>
 
-<ul>
-  <% for ticket in @project.tickets %>
-    <li><%= link_to ticket.title, [@project, ticket] %></li>
+<h2>Tickets</h2>
+<ul id='tickets'>
+  <% @project.tickets.each do |ticket| %>
+    <li>
+      <%= render ticket.state if ticket.state %>
+      <%= link_to "##{ticket.id} - #{ticket.title}", [@project, ticket] %>
+    </li>
   <% end %>
 </ul>

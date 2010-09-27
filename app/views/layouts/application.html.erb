@@ -16,8 +16,6 @@
 </head>
 <body>
 
-<%= notice %>
-<%= alert %>
 <h1><%= link_to "Ticketee", root_path %></h1>
 <nav>
   <% if !user_signed_in? %>
@@ -31,6 +29,11 @@
     <%= link_to "Sign out", destroy_user_session_path %> 
   <% end %>
 </nav>
+<% flash.each do |k,v| %>
+  <div class='flash' id='<%= k %>'>
+    <%= v %>
+  </div>
+<% end %>
 <%= yield %>
 
 </body>

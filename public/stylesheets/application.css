@@ -4,31 +4,33 @@
 }
 
 html {
-  background: #00A4D0;
+  background: white;
 }
 
 body {
-  font: 13pt Helvetica;
-  background: #006797;
-  color: white;
+  font: 13pt "Myriad Pro", Helvetica;
   margin: 5px 10% 0px 10%;
   height: 100%;
   padding: 30px;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
-  border: 1px solid #003F5C;
+ 
 }
 
 h1 {
   margin-bottom: 20px;
 }
 
-a {
-  color: #85FF00;
+nav {
+  margin: 10px 0px 10px 0px;
 }
 
-input[type=text] {
-  font-size: 16pt;
+a {
+  color: #74CC00;
+}
+
+input[type=text], input[type=password] {
+  font-size: 13pt;
 }
 
 textarea {
@@ -37,49 +39,92 @@ textarea {
   margin-bottom: 5px;
 }
 
-
 input[type=file] {
-  color: white;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-#ticket, .comment {
+.flash {
+  padding: 10px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
+  font-weight: bold;
+}
+
+#notice {
+  background: #85FF00;
+  color: black;
+}
+
+#alert {
+  background: #FF3444;
+}
+
+ul#tickets {
+  padding: 15px;
+  list-style-type: none;
+}
+
+ul#tickets li {
+  margin-bottom: 10px;
+}
+
+ul#tickets .state {
+  margin-right: 4em;
+}
+
+#ticket, .comment {
   margin: 15px 0 15px 0;
   padding: 15px;
-  border: 1px solid black;
-  background: #003F5C;
+  background: #eaeaea;
+  border: 1px solid #e0e0e0;
+}
+
+#ticket a {
+  color: #67A300;
 }
 
 #ticket h2 {
   float: left;
 }
 
-#ticket menu, #ticket .state, .states {
+#ticket menu {
+  font-size: 75%;
+}
+
+menu, #ticket .state, .states {
   float: right;
+}
+
+.comment .state {
+  display: inline;
 }
 
 #ticket section {
   clear: both;
 }
 
-#ticket .state {
-  float: right;
+#tickets .state {
+  float: left;
 }
 
 .state {
-  width: 3em;
+  width: 4em;
   text-align: center;
-  padding: 5px;
-  margin: 5px 5px 5px 5px;
+  font-weight: bold;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
-  font-size: 75%;
-  display: inline;
+  margin: 0px 5px;
+  font-size: 80%;
+  padding: 5px;
 }
 
-.comment {
+.new_comment { 
+  padding: 15px;
+  background: #eaeaea;
+}
+
+.comment, .new_comment {
   width: 75%;
 }
+

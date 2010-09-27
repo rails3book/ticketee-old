@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20100907085759) do
 
   create_table "states", :force => true do |t|
     t.string  "name"
-    t.string  "foreground"
+    t.string  "color"
     t.string  "background"
     t.boolean "default",    :default => false
   end

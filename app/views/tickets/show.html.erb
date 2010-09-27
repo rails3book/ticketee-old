@@ -27,7 +27,7 @@
 
 <h3>Comments</h3>
 <div id='comments'>
-  <%= render @ticket.comments %>
+  <%= render @ticket.comments.select(&:persisted?) %>
 </div>
 
 <%= render "comments/form" %>

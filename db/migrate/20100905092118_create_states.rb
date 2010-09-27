@@ -2,7 +2,7 @@ class CreateStates < ActiveRecord::Migration
   def self.up
     create_table :states do |t|
       t.string :name
-      t.string :foreground
+      t.string :color
       t.string :background
     end
 
