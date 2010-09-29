@@ -27,11 +27,7 @@ Feature: Creating comments
     And I press "Create Comment"
     Then I should see "Comment has not been created."
     And I should see "Text can't be blank"
-    
-  Scenario: Users cannot create a comment without permission
-    And I follow "Change a ticket's state"
-    Then I should not see "New comment"
-    
+
   Scenario: Changing a ticket's state
     And "user@ticketee.com" can change states on the "Ticketee" project
     When I follow "Change a ticket's state"
