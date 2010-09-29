@@ -35,8 +35,8 @@ Feature: Creating comments
     And I select "Open" from "State"
     And I press "Create Comment"
     Then I should see "Comment has been created."
-    And I should see "Open" within "#ticket #state"
-    Then I should see "State: → Open" within "#comments"
+    And I should see "Open" within "#ticket .state"
+    Then I should see "Open" within ".comment .state"
     
   Scenario: A user without permission cannot change the state
     When I follow "Change a ticket's state"
