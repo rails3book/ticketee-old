@@ -80,7 +80,6 @@ Feature: Assigning permissions
     Given I am signed in as "user@ticketee.com"
     When I follow "TextMate 2"
     And I follow "Shiny!"
-    Then I should see "" within "#ticket .state"
     When I fill in "Text" with "Opening this ticket."
     And I select "Open" from "State"
     And I press "Create Comment"
