@@ -13,6 +13,7 @@
     <small>Created by <%= @ticket.user.email %></small>
     <%= render :partial => @ticket.state if @ticket.state %>
     <%= simple_format(@ticket.description) %>
+    <div id='tags'><%= render @ticket.tags %></div>
   </section> 
   <% if !@ticket.assets.empty? %>
     <h3>Assets</h3>

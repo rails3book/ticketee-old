@@ -64,6 +64,7 @@ GEM
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    escape_utils (0.1.6)
     ffi (0.6.3)
       rake (>= 0.8.7)
     gherkin (2.1.5)
@@ -137,6 +138,7 @@ DEPENDENCIES
   database_cleaner
   devise
   email_spec!
+  escape_utils
   launchy
   paperclip
   rails (= 3.0.0)

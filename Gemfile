@@ -1,6 +1,5 @@
-#lolbump
 source 'http://rubygems.org'
-
+gem 'escape_utils'
 gem 'rails', '3.0.0'
 
 # Bundle edge Rails instead:
