@@ -22,7 +22,7 @@ Feature: Assigning permissions
     And I follow "Permissions"
 
   Scenario: Viewing a project
-    When I check "Read" for "TextMate 2"
+    When I check "View" for "TextMate 2"
     And I press "Update"
     And I follow "Sign out"
     
@@ -31,7 +31,7 @@ Feature: Assigning permissions
     And I should not see "Internet Explorer"
 
   Scenario: Creating tickets for a project
-    When I check "Read" for "TextMate 2"
+    When I check "View" for "TextMate 2"
     When I check "Create tickets" for "TextMate 2"
     And I press "Update"
     And I follow "Sign out"
@@ -46,7 +46,7 @@ Feature: Assigning permissions
 
 
   Scenario: Updating a ticket for a project
-    When I check "Read" for "TextMate 2"
+    When I check "View" for "TextMate 2"
     And I check "Edit tickets" for "TextMate 2"
     And I press "Update"
     And I follow "Sign out"
@@ -60,7 +60,7 @@ Feature: Assigning permissions
     Then I should see "Ticket has been updated"
 
   Scenario: Deleting a ticket for a project
-    When I check "Read" for "TextMate 2"
+    When I check "View" for "TextMate 2"
     And I check "Delete tickets" for "TextMate 2"
     And I press "Update"
     And I follow "Sign out"
@@ -72,7 +72,7 @@ Feature: Assigning permissions
     Then I should see "Ticket has been deleted."
     
   Scenario: Changing states for a ticket 
-    When I check "Read" for "TextMate 2"
+    When I check "View" for "TextMate 2"
     And I check "Change States" for "TextMate 2"
     And I press "Update"
     And I follow "Sign out"

@@ -1,7 +1,7 @@
 module Admin::PermissionsHelper
   def permissions
     { 
-      "read" => "Read",
+      "view" => "view",
       "create tickets" => "Create Tickets",
       "edit tickets" => "Edit Tickets",
       "delete tickets" => "Delete Tickets",

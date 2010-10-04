@@ -84,7 +84,7 @@ Feature: Hidden Links
 
   Scenario: Delete ticket link is shown to a user with permission
     Given "user@ticketee.com" can view the "TextMate 2" project
-    And "user@ticketee.com" can delete tickets from the "TextMate 2" project
+    And "user@ticketee.com" can delete tickets in the "TextMate 2" project
     And I am signed in as "user@ticketee.com"
     When I follow "TextMate 2"
     And I follow "Shiny!"
@@ -97,7 +97,7 @@ Feature: Hidden Links
     And I follow "Shiny!"
     Then I should not see the "Delete" link
 
-  Scenario: Delete thicket link is shown to admins
+  Scenario: Delete ticket link is shown to admins
     Given I am signed in as "admin@ticketee.com"
     When I follow "TextMate 2"
     And I follow "Shiny!"

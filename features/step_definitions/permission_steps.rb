@@ -1,4 +1,4 @@
-Given /^"([^"]*)" can ([^"]*) (on)?\s?the "([^"]*)" project$/ do |user, permission, project|
+Given /^"([^"]*)" can ([^"]*?) ([o|i]n)?\s?the "([^"]*)" project$/ do |user, permission, on, project|
   create_permission(user, find_project(project), permission)
 end
 

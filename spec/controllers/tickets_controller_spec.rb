@@ -19,7 +19,7 @@ describe TicketsController do
           
       before do
         sign_in(:user, user)
-        Permission.create(:user => user, :object => project, :action => "read")
+        Permission.create(:user => user, :object => project, :action => "view")
       end
 
       def cannot_create_tickets!
