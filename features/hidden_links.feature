@@ -39,7 +39,6 @@ Feature: Hidden Links
   Scenario: Delete project link is shown to admins
     Given I am signed in as "admin@ticketee.com"
     When I follow "TextMate 2"
-    Then show me the page
     Then I should see the "Delete Project" link
 
   Scenario: New ticket link is shown to a user with permission
@@ -59,7 +58,6 @@ Feature: Hidden Links
     Given I am signed in as "admin@ticketee.com"
     When I follow "TextMate 2"
     Then I should see the "New Ticket" link
-
 
   Scenario: Edit ticket link is shown to a user with permission
     Given "user@ticketee.com" can view the "TextMate 2" project
