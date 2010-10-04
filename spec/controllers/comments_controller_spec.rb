@@ -18,11 +18,18 @@ describe CommentsController do
     end
     
     it "cannot transition a state by passing through state_id" do
-      post :create, { :comment => { :text => "Hacked!",
+      post :create, { :tags => "", :comment => { :text => "Hacked!",
                                   :state_id => state.id },
                       :ticket_id => ticket.id }
       ticket.reload 
       ticket.state.should eql(nil)
+    end
+    
+    it "cannot tag a ticket without permission" do
+      post :create, { :tags => "one two", :comment => { :text => "Tag!" },
+                      :ticket_id => ticket.id }
+      ticket.reload
+      ticket.tags.should be_empty
     end
   end
 end

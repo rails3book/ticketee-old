@@ -6,7 +6,6 @@
     <%= f.text_area :text %>
   </p>
   
-  
   <% if can?(:"change states", @project) || current_user.admin? %>
     <p>
       <%= f.label :state_id %>
@@ -14,6 +13,10 @@
                               :selected => @ticket.state_id   %>
     </p>
   <% end %>
+  
+  <%= render "tags/form" %>
+  
+  
 
   <%= f.submit %>
 <% end %>

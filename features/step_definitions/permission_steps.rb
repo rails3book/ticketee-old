@@ -1,25 +1,5 @@
-Given /^"([^"]*)" can view the "([^"]*)" project$/ do |user, project|
-  create_permission(user, find_project(project), "read")
-end
-
-Given /^"([^"]*)" can create tickets on the "([^"]*)" project$/ do |user, project|
-  create_permission(user, find_project(project), "create tickets")
-end
-
-Given /^"([^"]*)" can edit tickets in the "([^"]*)" project$/ do |user, project|
-  create_permission(user, find_project(project), "edit tickets")
-end
-
-Given /^"([^"]*)" can delete tickets from the "([^"]*)" project$/ do |user, project|
-  create_permission(user, find_project(project), "delete tickets")
-end
-
-Given /^"([^"]*)" can create comments on the "([^"]*)" project$/ do |user, project|
-  create_permission(user, find_project(project), "create comments")
-end
-
-Given /^"([^"]*)" can change states on the "([^"]*)" project$/ do |user, project|
-  create_permission(user, find_project(project), "change states")
+Given /^"([^"]*)" can ([^"]*) (on)?\s?the "([^"]*)" project$/ do |user, permission, project|
+  create_permission(user, find_project(project), permission)
 end
 
 When /^I check "([^"]*)" for "([^"]*)"$/ do |permission, name|
