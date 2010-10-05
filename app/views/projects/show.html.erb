@@ -12,8 +12,14 @@
 <% end %>
 
 <h2>Tickets</h2>
+<%= form_tag search_project_tickets_path(@project),
+    :method => :get do %>
+  <%= label_tag "search" %>
+  <%= text_field_tag "search", params[:search] %>
+  <%= submit_tag "Search" %>
+<% end %>
 <ul id='tickets'>
-  <% @project.tickets.each do |ticket| %>
+  <% @tickets.each do |ticket| %>
     <li>
       <%= render ticket.state if ticket.state %>
       <%= link_to "##{ticket.id} - #{ticket.title}", [@project, ticket] %>

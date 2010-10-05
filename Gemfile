@@ -23,6 +23,8 @@ gem 'devise'
 gem 'cancan'
 
 gem 'paperclip'
+
+gem 'searcher'
 # Use unicorn as the web server
 # gem 'unicorn'
 
