@@ -68,6 +68,11 @@ ul#tickets .state {
   margin-right: 4em;
 }
 
+
+ul#tickets .state {
+  float: left;
+}
+
 #ticket, .comment {
   margin: 15px 0 15px 0;
   padding: 15px;
@@ -99,10 +104,6 @@ menu, #ticket .state, .states {
   clear: both;
 }
 
-#tickets .state {
-  float: left;
-}
-
 .state {
   width: 4em;
   text-align: center;
@@ -112,6 +113,27 @@ menu, #ticket .state, .states {
   margin: 0px 5px;
   font-size: 80%;
   padding: 5px;
+}
+
+#ticket #tags {
+  margin-top: 20px;
+}
+
+#ticket .tag {
+  background: #232323;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  color: white;
+  padding: 8px;
+}
+
+#ticket .tag a {
+  color: white;
+}
+
+#ticket .tag .delete {
+  font-size: 125%;
+  text-decoration: none;
 }
 
 .new_comment { 
