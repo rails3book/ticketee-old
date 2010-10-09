@@ -10,8 +10,6 @@ Feature: Ticket notifications
       | user2@ticketee.com | password |
       
     And I am signed in as "user@ticketee.com"
-    
-    And there is a user with the email address ""
     Given there is a project called "TextMate 2"
     And "user@ticketee.com" can view the "TextMate 2" project
     And "user@ticketee.com" has created a ticket for this project:

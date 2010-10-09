@@ -4,13 +4,15 @@ Feature: Hidden Links
   I want certain links hidden from me
 
   Background:
-    Given there is an user with the email address "user@ticketee.com" and password "password"
-    Given there is an admin with the email address "admin@ticketee.com" and password "password"
+    Given there are the following users:
+      | email              | password | admin |
+      | user@ticketee.com  | password | false |
+      | admin@ticketee.com | password | true  |
     And there is a project called "TextMate 2"
     And "user@ticketee.com" can view the "TextMate 2" project
     And "user@ticketee.com" has created a ticket for this project:
-      | title  | description          |
-      | Shiny! | My eyes! My eyes!    |
+      | title  | description       |
+      | Shiny! | My eyes! My eyes! |
     And I am on the homepage
 
   Scenario: New project link is hidden for signed-in users

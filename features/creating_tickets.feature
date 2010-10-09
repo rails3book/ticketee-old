@@ -5,7 +5,9 @@ Feature: Creating Tickets
 
   Background:
   Given there is a project called "Internet Explorer"
-  And there is a user with the email address "user@ticketee.com" and password "password"
+  Given there are the following users:
+    | email             | password |
+    | user@ticketee.com | password |
   And "user@ticketee.com" can view the "Internet Explorer" project
   And "user@ticketee.com" can tag the "Internet Explorer" project
   And "user@ticketee.com" can create tickets on the "Internet Explorer" project

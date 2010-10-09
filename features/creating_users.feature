@@ -4,7 +4,9 @@ Feature: Creating Users
   I want to be able to add them through the backend
 
   Background:
-    Given there is an admin with the email address "admin@ticketee.com" and password "password"
+    Given there are the following users:
+      | email              | password | admin |
+      | admin@ticketee.com | password | true  |
     And I am signed in as them
     Given I am on the homepage
     When I follow "Admin"

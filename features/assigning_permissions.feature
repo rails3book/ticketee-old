@@ -4,10 +4,14 @@ Feature: Assigning permissions
   I want to check all the boxes
 
   Background:
-    Given there is an admin with the email address "admin@ticketee.com" and password "password"
+    Given there are the following users:
+      | email              | password | admin |
+      | admin@ticketee.com | password | true  |
     And I am signed in as them
     
-    And there is a user with the email address "user@ticketee.com" and password "password"
+    Given there are the following users:
+      | email             | password |
+      | user@ticketee.com | password |
     And there is a project called "TextMate 2"
     And "user@ticketee.com" has created a ticket for this project:
       | title  | description       |

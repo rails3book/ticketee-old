@@ -4,7 +4,9 @@ Feature: Deleting tickets
   I want to press a button and make them disappear
 
   Background:
-    Given there is a user with the email address "user@ticketee.com" and password "password"
+    Given there are the following users:
+      | email             | password |
+      | user@ticketee.com | password |
     And I am signed in as them
     Given there is a project called "TextMate 2"
     And "user@ticketee.com" can view the "TextMate 2" project

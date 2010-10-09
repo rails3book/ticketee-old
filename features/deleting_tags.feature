@@ -4,7 +4,9 @@ Feature: Deleting tags
   I want to click a button and make them go away
   
   Background:
-    Given there is a user with the email address "user@ticketee.com" and password "password"
+    Given there are the following users:
+      | email             | password |
+      | user@ticketee.com | password |
     And I am signed in as them
     And there is a project called "Ticketee"
     And "user@ticketee.com" can view the "Ticketee" project
