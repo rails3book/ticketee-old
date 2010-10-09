@@ -1,4 +1,4 @@
-Ticketee::Application.routes.draw do |map|
+Ticketee::Application.routes.draw do
   devise_for :users
 
   root :to => "projects#index"
