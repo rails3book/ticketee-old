@@ -7,4 +7,4 @@ require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'
 
-Rails::Application.load_tasks
+Ticketee::Application.load_tasks
