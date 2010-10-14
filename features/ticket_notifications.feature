@@ -6,19 +6,19 @@ Feature: Ticket notifications
   Background:
     Given there are the following users:
       | email              | password |
-      | user@ticketee.com  | password |
-      | user2@ticketee.com | password |
+      | alice@ticketee.com | password |
+      | bob@ticketee.com   | password |
       
     Given a clear email queue
 
     Given there is a project called "TextMate 2"
-    And "user@ticketee.com" can view the "TextMate 2" project
-    And "user2@ticketee.com" can view the "TextMate 2" project
-    And "user@ticketee.com" has created a ticket for this project:
+    And "alice@ticketee.com" can view the "TextMate 2" project
+    And "bob@ticketee.com" can view the "TextMate 2" project
+    And "alice@ticketee.com" has created a ticket for this project:
       | title        | description       |
       | Release date | TBA very shortly. |
 
-    Given I am signed in as "user2@ticketee.com"        
+    Given I am signed in as "bob@ticketee.com"        
     Given I am on the homepage
 
   Scenario: Ticket owner is automatically subscribed to a ticket
@@ -27,9 +27,11 @@ Feature: Ticket notifications
     And I fill in "Text" with "Is it out yet?"
     And I press "Create Comment"
     
-    Then "user@ticketee.com" should receive an email
-    Then I click the first link in the email
-    Then I should be on the "Release date" ticket page for "TextMate 2"
+    Then "alice@ticketee.com" should receive an email
+    When "alice@ticketee.com" opens the email
+    Then they should see "updated the Release date ticket" in the email body
+    Then they click the first link in the email
+    Then I should be on the "Release date" ticket in the "TextMate 2" project
   
   
   

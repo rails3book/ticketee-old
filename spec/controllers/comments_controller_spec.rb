@@ -6,7 +6,8 @@ describe CommentsController do
   
   let(:ticket) do
     project.tickets.create(:title => "State transitions",
-                           :description => "Can't be hacked.")
+                           :description => "Can't be hacked.",
+                           :user => user)
   end
   
   let(:state) { State.create!(:name => "New") }

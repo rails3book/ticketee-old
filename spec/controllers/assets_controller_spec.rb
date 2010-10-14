@@ -9,7 +9,8 @@ describe AssetsController do
   
   let(:ticket) do
     project.tickets.create(:title => "File attachment",
-                           :description => "A wild file appears!")
+                           :description => "A wild file appears!",
+                           :user => good_user)
   end
   
   let(:path) { Rails.root + "spec/fixtures/speed.txt" }

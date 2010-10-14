@@ -5,7 +5,11 @@ describe TicketsController do
   let(:user) { create_user! }
   
   let(:project) { Project.create(:name => "Ticketee") }
-  let(:ticket) { project.tickets.create(:title => "Restrict permissions", :description => "For the tickets controller.")}
+  let(:ticket) do
+    project.tickets.create(:title => "Restrict permissions",
+                           :description => "For the tickets controller.",
+                           :user => user)
+  end
 
   context "standard users" do
     it "cannot access a ticket for a project they don't have access to" do
