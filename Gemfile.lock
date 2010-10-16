@@ -1,20 +1,18 @@
-GIT
-  remote: git://github.com/bmabey/email-spec.git
-  revision: e197a167a3f89cba6848ba144e342537e1cf64ab
-  branch: rails3
+PATH
+  remote: vendor/gems/email-spec
   specs:
-    email_spec (0.6.2)
+    email_spec (1.0.0)
 
 GEM
   remote: http://rubygems.org/
   specs:
     abstract (1.0.0)
-    actionmailer (3.0.0)
-      actionpack (= 3.0.0)
+    actionmailer (3.0.1)
+      actionpack (= 3.0.1)
       mail (~> 2.2.5)
-    actionpack (3.0.0)
-      activemodel (= 3.0.0)
-      activesupport (= 3.0.0)
+    actionpack (3.0.1)
+      activemodel (= 3.0.1)
+      activesupport (= 3.0.1)
       builder (~> 2.1.2)
       erubis (~> 2.6.6)
       i18n (~> 0.4.1)
@@ -22,24 +20,24 @@ GEM
       rack-mount (~> 0.6.12)
       rack-test (~> 0.5.4)
       tzinfo (~> 0.3.23)
-    activemodel (3.0.0)
-      activesupport (= 3.0.0)
+    activemodel (3.0.1)
+      activesupport (= 3.0.1)
       builder (~> 2.1.2)
       i18n (~> 0.4.1)
-    activerecord (3.0.0)
-      activemodel (= 3.0.0)
-      activesupport (= 3.0.0)
+    activerecord (3.0.1)
+      activemodel (= 3.0.1)
+      activesupport (= 3.0.1)
       arel (~> 1.0.0)
       tzinfo (~> 0.3.23)
-    activeresource (3.0.0)
-      activemodel (= 3.0.0)
-      activesupport (= 3.0.0)
-    activesupport (3.0.0)
+    activeresource (3.0.1)
+      activemodel (= 3.0.1)
+      activesupport (= 3.0.1)
+    activesupport (3.0.1)
     arel (1.0.1)
       activesupport (~> 3.0.0)
     bcrypt-ruby (2.1.2)
     builder (2.1.2)
-    cancan (1.3.4)
+    cancan (1.4.0)
     capybara (0.3.9)
       culerity (>= 0.2.4)
       mime-types (>= 1.16)
@@ -47,6 +45,8 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       selenium-webdriver (>= 0.0.3)
+    childprocess (0.0.7)
+      ffi (~> 0.6.3)
     configuration (1.1.0)
     cucumber (0.9.2)
       builder (~> 2.1.2)
@@ -76,13 +76,13 @@ GEM
     launchy (0.3.7)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
-    mail (2.2.6.1)
+    mail (2.2.7)
       activesupport (>= 2.3.6)
       mime-types
       treetop (>= 1.4.5)
     mime-types (1.16)
     nokogiri (1.4.3.1)
-    paperclip (2.3.3)
+    paperclip (2.3.4)
       activerecord
       activesupport
     polyglot (0.3.1)
@@ -91,17 +91,17 @@ GEM
       rack (>= 1.0.0)
     rack-test (0.5.6)
       rack (>= 1.0)
-    rails (3.0.0)
-      actionmailer (= 3.0.0)
-      actionpack (= 3.0.0)
-      activerecord (= 3.0.0)
-      activeresource (= 3.0.0)
-      activesupport (= 3.0.0)
+    rails (3.0.1)
+      actionmailer (= 3.0.1)
+      actionpack (= 3.0.1)
+      activerecord (= 3.0.1)
+      activeresource (= 3.0.1)
+      activesupport (= 3.0.1)
       bundler (~> 1.0.0)
-      railties (= 3.0.0)
-    railties (3.0.0)
-      actionpack (= 3.0.0)
-      activesupport (= 3.0.0)
+      railties (= 3.0.1)
+    railties (3.0.1)
+      actionpack (= 3.0.1)
+      activesupport (= 3.0.1)
       rake (>= 0.8.4)
       thor (~> 0.14.0)
     rake (0.8.7)
@@ -120,8 +120,9 @@ GEM
     rubyzip (0.9.4)
     searcher (0.0.3)
       activerecord (~> 3.0.0)
-    selenium-webdriver (0.0.28)
-      ffi (>= 0.6.1)
+    selenium-webdriver (0.0.29)
+      childprocess (>= 0.0.7)
+      ffi (~> 0.6.3)
       json_pure
       rubyzip
     sqlite3-ruby (1.3.1)
@@ -146,7 +147,7 @@ DEPENDENCIES
   escape_utils
   launchy
   paperclip
-  rails (= 3.0.0)
+  rails (= 3.0.1)
   rspec-rails (= 2.0.0)
   searcher
   sqlite3-ruby
