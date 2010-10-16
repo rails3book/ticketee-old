@@ -1,5 +1,7 @@
-require 'email-spec'
+require 'email_spec'
+require 'email_spec/helpers'
 World(EmailSpec::Helpers)
+
 # Commonly used email steps
 #
 # To add your own steps make a custom_email_steps.rb
@@ -96,11 +98,11 @@ Then /^(?:I|they) should see \/([^"]*?)\/ in the email subject$/ do |text|
 end
 
 Then /^(?:I|they) should see "([^"]*?)" in the email body$/ do |text|
-  current_email.body.to_s.should include(text)
+  current_email.default_part_body.to_s.should include(text)
 end
 
 Then /^(?:I|they) should see \/([^"]*?)\/ in the email body$/ do |text|
-  current_email.body.should =~ Regexp.new(text)
+  current_email.default_part_body.to_s.should =~ Regexp.new(text)
 end
 
 Then /^(?:I|they) should see the email delivered from "([^"]*?)"$/ do |text|
@@ -113,6 +115,18 @@ end
 
 Then /^(?:I|they) should see \/([^\"]*)\/ in the email "([^"]*?)" header$/ do |text, name|
   current_email.should have_header(name, Regexp.new(text))
+end
+
+Then /^I should see it is a multi\-part email$/ do
+  current_email.should be_multipart
+end
+
+Then /^(?:I|they) should see "([^"]*?)" in the email html part body$/ do |text|
+    current_email.html_part.body.to_s.should include(text)
+end
+
+Then /^(?:I|they) should see "([^"]*?)" in the email text part body$/ do |text|
+    current_email.text_part.body.to_s.should include(text)
 end
 
 #
@@ -182,5 +196,3 @@ end
 Then /^save and open all raw emails$/ do
   EmailSpec::EmailViewer::save_and_open_all_raw_emails
 end
-
-World(EmailSpec::Helpers)
