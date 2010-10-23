@@ -22,4 +22,4 @@ Feature: Creating projects
   Scenario: Creating a project without a name
     And I press "Create"
     Then I should see "Project has not been created."
-    Then I should see "Name can't be blank"
+    And I should see "Name can't be blank"
