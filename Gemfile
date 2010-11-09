@@ -11,11 +11,11 @@ group :test, :development do
   gem 'rspec-rails', '2.0.0'
 end
 
-group :cucumber do
+group :test do
   gem 'database_cleaner'
   gem 'cucumber-rails'
   gem 'capybara'
-  gem 'email_spec', :git => "git://github.com/bmabey/email-spec.git", :branch => "rails3", :require => "email-spec"
+  gem 'email_spec', '1.0.0'
   gem 'launchy'
 end
 
