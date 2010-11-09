@@ -1,16 +1,11 @@
 require 'spec_helper'
 
 describe AssetsController do
-  let(:project) { Project.create(:name => "Ticketee") }
-  
+  let(:project) { Factory(:project) }
   let(:good_user) { create_user! } 
+  let(:bad_user) { create_user! }
   
-  let(:bad_user) { create_user!(:email => "other_user@ticketee.com") }
-  
-  let(:ticket) do
-    project.tickets.create(:title => "File attachment",
-                           :description => "A wild file appears!",
-                           :user => good_user)
+  let(:ticket) { Factory(:ticket, :project => project) }
   end
   
   let(:path) { Rails.root + "spec/fixtures/speed.txt" }

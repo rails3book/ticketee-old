@@ -2,14 +2,8 @@ require 'spec_helper'
 
 describe CommentsController do
   
-  let(:project) { Project.create!(:name => "Ticketee") }
-  
-  let(:ticket) do
-    project.tickets.create(:title => "State transitions",
-                           :description => "Can't be hacked.",
-                           :user => user)
-  end
-  
+  let(:project) { Factory(:project) }
+  let(:ticket) { Factory(:ticket, :project => project) }
   let(:state) { State.create!(:name => "New") }
   let(:user) { create_user! }
   
