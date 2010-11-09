@@ -33,6 +33,23 @@ Feature: Ticket notifications
     Then they click the first link in the email
     Then I should be on the "Release date" ticket in the "TextMate 2" project
   
-  
+  Scenario: Comment authors are automatically subscribed to a ticket
+    When I follow "TextMate 2"
+    And I follow "Release date"
+    And I fill in "Text" with "Is it out yet?"
+    And I press "Create Comment"
+    Then I should see "Comment has been created."
+    When I follow "Sign out"
+    
+    Given a clear email queue
+
+    Given I am signed in as "alice@ticketee.com"
+    When I follow "TextMate 2"
+    And I follow "Release date"
+    And I fill in "Text" with "Not yet!"
+    And I press "Create Comment"
+    Then I should see "Comment has been created."
+    Then "bob@ticketee.com" should receive an email
+    Then "alice@ticketee.com" should have no emails
   
    

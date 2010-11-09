@@ -3,6 +3,7 @@ class Notifier < ActionMailer::Base
   
   def comment_updated(comment)
     @comment = comment
-    recipients comment.ticket.watchers.map(&:email)
+    users = comment.ticket.watchers - [comment.user]
+    recipients users.map(&:email)
   end
 end
