@@ -6,7 +6,6 @@ describe AssetsController do
   let(:bad_user) { create_user! }
   
   let(:ticket) { Factory(:ticket, :project => project) }
-  end
   
   let(:path) { Rails.root + "spec/fixtures/speed.txt" }
   
