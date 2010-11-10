@@ -23,5 +23,6 @@ class Comment < ActiveRecord::Base
     
     def creator_watches_ticket
       ticket.watchers << user
+      ticket.save
     end
 end

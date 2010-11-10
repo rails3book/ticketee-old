@@ -18,6 +18,7 @@ group :test do
   gem 'email_spec', '1.0.0'
   gem 'launchy'
   gem 'factory_girl'
+  gem 'gmail'
 end
 
 gem 'devise'

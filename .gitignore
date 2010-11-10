@@ -7,3 +7,5 @@ rerun.txt
 *.swp
 public/system
 files
+config/initializers/mail.rb
+features/gmail.feature
