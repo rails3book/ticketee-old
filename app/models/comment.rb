@@ -10,6 +10,8 @@ class Comment < ActiveRecord::Base
   
   validates_presence_of :text
   
+  delegate :project, :to => :ticket
+  
   private
   
     def set_ticket_state
