@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 gem 'escape_utils'
-gem 'rails', '3.0.1'
+gem 'rails', '3.0.3'
 
 # Bundle edge Rails instead:
 #gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -26,7 +26,7 @@ gem 'cancan'
 
 gem 'paperclip'
 
-gem 'searcher'
+gem 'searcher', '0.0.4'
 # Use unicorn as the web server
 # gem 'unicorn'
 
