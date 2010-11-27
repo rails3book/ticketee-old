@@ -2,10 +2,9 @@ class Receiver < ActionMailer::Base
   default :from => "from@example.com"
   
   def self.parse(email)
-    reply_separator = /(.*)\s?== ADD YOUR REPLY ABOVE THIS LINE ==/
-    comment_text = reply_separator.match(email.body.to_s)
+    reply_separator = /(.*?)\s?== ADD YOUR REPLY ABOVE THIS LINE ==/m
     
-    p comment_text
+    comment_text = reply_separator.match(email.body.to_s)
     
     if comment_text
     
