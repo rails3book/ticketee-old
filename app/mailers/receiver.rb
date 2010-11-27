@@ -13,7 +13,7 @@ class Receiver < ActionMailer::Base
       project = Project.find(project_id)
       ticket = project.tickets.find(ticket_id)
       user = User.find_by_email(email.from[0])
-      ticket.comments.create(:text => comment_text[1],
+      ticket.comments.create(:text => comment_text[1].strip,
                             :user => user)
     end
     
