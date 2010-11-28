@@ -17,5 +17,7 @@ When /^I wait (\d+) seconds$/ do |num|
 end
 
 Then /^I should not see the "([^"]*)" element$/ do |css|
-  find(:css, css).should(be_nil, "Found #{css} but was expecting not to.")
+  lambda { find(:css, css) }.should(
+    raise_error(Capybara::ElementNotFound, "Unable to find '#{css}'")
+  )
 end
