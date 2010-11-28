@@ -15,10 +15,10 @@ group :test do
   gem 'database_cleaner'
   gem 'cucumber-rails'
   gem 'capybara'
-  gem 'email_spec', '1.0.0'
+  gem 'email_spec', :git => "git://github.com/bmabey/email-spec"
   gem 'launchy'
   gem 'factory_girl'
-  gem 'gmail'
+  gem 'gmail', :git => "git://github.com/radar/gmail"
 end
 
 gem 'devise'
