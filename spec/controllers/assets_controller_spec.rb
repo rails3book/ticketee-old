@@ -14,7 +14,7 @@ describe AssetsController do
   end
   
   before do
-    good_user.permissions.create!(:action => "read", :object => project)
+    good_user.permissions.create!(:action => "view", :object => project)
   end
   
   context "users with access" do
