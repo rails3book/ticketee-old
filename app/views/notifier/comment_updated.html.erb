@@ -1,0 +1,15 @@
+== ADD YOUR REPLY ABOVE THIS LINE ==
+<img src='http://ticketeeapp.com/images/logo.png' alt='Ticketee' />
+
+<p>
+  Hello.
+</p>
+
+<p>
+  <%= @comment.user.email %> has just updated the <%= @comment.ticket.title %> ticket for <%= @comment.ticket.project.name %>. They wrote:</p>
+
+<blockquote><%= @comment.text %></blockquote>
+
+<p>
+  You can <%= link_to "view this ticket online here", project_ticket_url(@comment.ticket.project, @comment.ticket) %>
+</p>

@@ -7,18 +7,20 @@ describe Receiver do
     ticket = comment.ticket
     
     comment_email = ActionMailer::Base.deliveries.last
+    
+    user = Factory(:user)
 
-    mail = Mail.new(:from => "user@ticketee.com",
+    mail = Mail.new(:from => user.email,
                     :subject => "Re: #{comment_email.subject}",
                     :body => %Q{This is a brand new comment
-                        #{comment_email.body}
+                        #{comment_email.default_part_body}
                    },
                     :to => comment_email.from)
 
-    p mail.body.to_s
     lambda { Receiver.parse(mail) }.should(
       change(ticket.comments, :count).by(1)
     )
     
+    ticket.comments.last.text.should eql("This is a brand new comment")
   end
 end
