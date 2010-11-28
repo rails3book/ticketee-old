@@ -22,7 +22,7 @@
   <% @tickets.each do |ticket| %>
     <li>
       <%= render ticket.state if ticket.state %>
-      <%= link_to "##{ticket.id} - #{ticket.title}", [@project, ticket] %>
+      #<%= ticket.id %> - <%= link_to ticket.title, [@project, ticket] %>
     </li>
   <% end %>
 </ul>
