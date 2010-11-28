@@ -8,7 +8,7 @@ When /^I log into gmail with:$/ do |table|
 end
 
 Then /^there should be an email from Ticketee in my inbox$/ do
- @mails = @gmail.inbox.find(:unread, :from => "ticketee@gmail.com") do |mail|
+ @gmail.inbox.find(:unread, :from => "ticketee@gmail.com") do |mail|
     if mail.subject =~ /^\[ticketee\]/
       mail.delete!
       @received_mail = true
