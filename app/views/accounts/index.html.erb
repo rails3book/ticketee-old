@@ -1,0 +1,23 @@
+<h2>Dashboard</h2>
+<% @accounts.each do |account| %>
+  <%= div_for account do %>
+    <h3><%= account.name %></h3>
+    <%= admins_only(account) do %>
+      <%= link_to "Admin", admin_root_path %>
+    <% end %>
+    <% if @admin_accounts.include?(account) %>
+      <% projects = account.projects %>
+    <% else %>
+      <% projects = account.projects.readable_by(current_user) %>
+    <% end %>
+    <% if projects.empty? %>
+      There are no projects for this account yet!
+    <% else %>
+      <ul>
+        <% projects.each do |project| %>
+          <li><%= link_to project.name, [account, project] %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+<% end %>

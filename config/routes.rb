@@ -2,8 +2,10 @@ Ticketee::Application.routes.draw do
 
   devise_for :users
 
-  root :to => "projects#index"
+  root :to => "accounts#index"
   get 'signup', :to => "accounts#new"
+  
+  resources :accounts
   
   resources :projects do
     resources :tickets do

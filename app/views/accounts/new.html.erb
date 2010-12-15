@@ -1,0 +1,34 @@
+<h2>Sign up</h2>
+
+<%= form_for @account do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name, "Account Name" %>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :path, "Account Path" %>
+    http://ticketee.com/<%= f.text_field :path %>
+  </p>
+  
+  <h3>Owner information</h3>
+  <%= f.fields_for :owner do |owner| %>
+    <p>
+      <%= owner.label :email %>
+      <%= owner.text_field :email %>
+    </p>
+
+    <p>
+      <%= owner.label :password %>
+      <%= owner.password_field :password %>
+    </p>
+
+    <p>
+      <%= owner.label :password_confirmation %>
+      <%= owner.text_field :password_confirmation %>
+    </p>
+  <% end %>
+
+  <%= f.submit "Create my account" %>
+<% end %>

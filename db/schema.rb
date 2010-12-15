@@ -10,7 +10,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101011111251) do
+ActiveRecord::Schema.define(:version => 20101214102447) do
+
+  create_table "account_users", :force => true do |t|
+    t.integer  "account_id"
+    t.integer  "user_id"
+    t.boolean  "admin",      :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "accounts", :force => true do |t|
+    t.string   "name"
+    t.string   "path"
+    t.integer  "owner_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name"
@@ -45,7 +61,10 @@ ActiveRecord::Schema.define(:version => 20101011111251) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "account_id"
   end
+
+  add_index "projects", ["account_id"], :name => "index_projects_on_account_id"
 
   create_table "states", :force => true do |t|
     t.string  "name"
@@ -82,9 +101,9 @@ ActiveRecord::Schema.define(:version => 20101011111251) do
   add_index "tickets", ["state_id"], :name => "index_tickets_on_state_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                               :default => "",    :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "",    :null => false
-    t.string   "password_salt",                       :default => "",    :null => false
+    t.string   "email",                               :default => "", :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string   "password_salt",                       :default => "", :null => false
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
@@ -98,7 +117,6 @@ ActiveRecord::Schema.define(:version => 20101011111251) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin",                               :default => false
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

@@ -5,7 +5,7 @@ Feature: Creating an account
   
   Background:
     Given I am on the homepage
-    And I follow "Sign up" <co id="ch12_65_1"/>
+    And I follow "Sign up"
 
   Scenario: Signing up for an account
     And I fill in "Account Name" with "ticketee"
@@ -29,6 +29,7 @@ Feature: Creating an account
     
   Scenario Outline: Accounts cannot use reserved names
     When I fill in "Account Name" with "<name>"
+    And I fill in "Account Path" with "<name>"
     And I press "Create my account"
     Then I should see "Your account could not be created."
     Then I should see "Path is not allowed, please choose another."
