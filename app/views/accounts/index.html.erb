@@ -3,7 +3,7 @@
   <%= div_for account do %>
     <h3><%= account.name %></h3>
     <%= admins_only(account) do %>
-      <%= link_to "Admin", admin_root_path %>
+      <%= link_to "Admin", admin_root_path(account) %>
     <% end %>
     <% if @admin_accounts.include?(account) %>
       <% projects = account.projects %>

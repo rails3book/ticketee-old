@@ -6,42 +6,45 @@ Ticketee::Application.routes.draw do
   get 'signup', :to => "accounts#new"
   
   resources :accounts
-  
-  resources :projects do
-    resources :tickets do
-      collection do
-        get :search
-      end
+  scope :path => ":account_id" do
+    resources :projects do
+      resources :tickets do
+        collection do
+          get :search
+        end
       
-      member do
-        post :watch
+        member do
+          post :watch
+        end
       end
     end
-  end
   
-  resources :tickets do
-    resources :comments
-    resources :tags do
-      member do
-        delete :remove
+    resources :tickets do
+      resources :comments
+      resources :tags do
+        member do
+          delete :remove
+        end
       end
     end
-  end
   
-  resources :assets
+    resources :assets
 
-  namespace :admin do
-    root :to => "base#index"
-    resources :users do
-      resources :permissions
-    end
-    resources :states do
-      member do
-        get :make_default
+    namespace :admin do
+      root :to => "base#index"
+      resources :users do
+        resources :permissions
+      end
+      resources :states do
+        member do
+          get :make_default
+        end
       end
     end
-  end
   
-  match '/admin/users/:user_id/permissions', :to => 'admin/permissions#update', :as => :update_user_permissions
+    match '/admin/users/:user_id/permissions', 
+      :to => 'admin/permissions#update',
+      :as => :update_user_permissions
+  end
 end
 

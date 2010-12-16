@@ -7,11 +7,19 @@ class ApplicationController < ActionController::Base
   
   def authorize_admin!
     authenticate_user!
-    unless current_user.admin?
+    unless current_user.accounts.joins(:account_users).
+             where("account_users.admin = ? AND account_users.account_id = ?", 
+                   true, current_account.id).exists?
       flash[:alert] = "You must be an admin to do that."
       redirect_to root_path
     end
   end
+  
+  def current_account
+    @account ||= Account.find(params[:account_id])
+  end
+  
+  helper_method :current_account
   
   def find_project
     @project = Project.for(current_user).find(params[:project_id])
