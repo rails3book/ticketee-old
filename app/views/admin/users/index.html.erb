@@ -1,6 +1,6 @@
 <%= link_to "New User", new_admin_user_path %>
 <ul>
   <% for user in @users %>
-    <li><%= link_to user, [:admin, user] %></li>
+    <li><%= link_to user, admin_user_path(current_account, user) %></li>
   <% end %>
 </ul>

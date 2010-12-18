@@ -14,6 +14,6 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation
 
   def to_s
-    "#{email} (#{admin? ? "Admin" : "User"})"
+    email
   end
 end

@@ -19,4 +19,10 @@ class Account < ActiveRecord::Base
     where("account_users.user_id = ? AND account_users.admin = ?",
           user.id, true)
   end
+  
+  def admins
+    users.joins(:account_users).
+    where("account_users.admin = ?", true)
+  end
+  
 end
