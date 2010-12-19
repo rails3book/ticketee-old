@@ -1,9 +1,11 @@
 source 'http://rubygems.org'
 gem 'escape_utils'
-gem 'rails', '3.0.3'
+#gem 'rails', '3.0.3'
 
 # Bundle edge Rails instead:
-#gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'rack', :git => "git://github.com/rack/rack.git"
+gem 'arel', :git => "git://github.com/rails/arel.git"
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
@@ -26,7 +28,7 @@ gem 'cancan'
 
 gem 'paperclip'
 
-gem 'searcher', '0.0.4'
+#gem 'searcher', '0.0.4'
 # Use unicorn as the web server
 # gem 'unicorn'
 

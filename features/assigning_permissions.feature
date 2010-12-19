@@ -35,7 +35,7 @@ Feature: Assigning permissions
     And I follow "Sign out"
     
     Given I am signed in as "user@ticketee.com"
-    Then I should see "TextMate 2"     
+    Then I should see "TextMate 2"
     And I should not see "Internet Explorer"
 
   Scenario: Creating tickets for a project

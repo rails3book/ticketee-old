@@ -15,7 +15,7 @@
     <% else %>
       <ul>
         <% projects.each do |project| %>
-          <li><%= link_to project.name, [account, project] %></li>
+          <li><%= link_to project.name, project_path(account, project) %></li>
         <% end %>
       </ul>
     <% end %>

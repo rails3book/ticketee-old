@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   
   def authorize_admin!
     authenticate_user!
-    unless current_user.accounts.joins(:account_users).
+    unless current_user.accounts.
              where("account_users.admin = ? AND account_users.account_id = ?", 
                    true, current_account.id).exists?
       flash[:alert] = "You must be an admin to do that."
