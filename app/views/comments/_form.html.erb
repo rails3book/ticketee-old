@@ -6,7 +6,7 @@
     <%= f.text_area :text %>
   </p>
   
-  <% if can?(:"change states", @project) || current_user.admin? %>
+  <% if authorized?(:"change states", @project) %>
     <p>
       <%= f.label :state_id %>
       <%= f.select :state_id, @states.map { |s| [s.name, s.id] },
