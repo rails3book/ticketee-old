@@ -11,5 +11,7 @@
 <blockquote><%= @comment.text %></blockquote>
 
 <p>
-  You can <%= link_to "view this ticket online here", project_ticket_url(@comment.ticket.project, @comment.ticket) %>
+  You can <%= link_to "view this ticket online here", project_ticket_url(@comment.account,
+                                                                      @comment.ticket.project,
+                                                                      @comment.ticket) %>
 </p>

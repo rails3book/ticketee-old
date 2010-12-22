@@ -6,4 +6,6 @@ Hello.
 
 <%= @comment.text %>
 
-You can view this ticket online by going to: <%= project_ticket_url(@comment.ticket.project, @comment.ticket) %>
+You can view this ticket online by going to: <%= project_ticket_url(@comment.account,
+                                                                    @comment.ticket.project,
+                                                                    @comment.ticket) %>

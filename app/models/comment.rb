@@ -11,6 +11,7 @@ class Comment < ActiveRecord::Base
   validates_presence_of :text
   
   delegate :project, :to => :ticket
+  delegate :account, :to => :project
   
   private
   

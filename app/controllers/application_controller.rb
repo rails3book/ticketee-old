@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_account
   
   def find_project
-    @project = Project.for(current_user).find(params[:project_id])
+    @project = current_account.projects_for(current_user).find(params[:project_id])
     rescue ActiveRecord::RecordNotFound
       flash[:alert] = "The project you were looking for could not be found."
       redirect_to root_path
@@ -30,5 +30,9 @@ class ApplicationController < ActionController::Base
 
   def find_states
     @states = State.all
+  end
+  
+  def admin?
+    current_account.admins.include?(current_user)
   end
 end

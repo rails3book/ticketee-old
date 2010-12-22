@@ -16,4 +16,10 @@ class User < ActiveRecord::Base
   def to_s
     email
   end
+  
+  def admin_accounts
+    accounts.joins(:account_users).
+    where("account_users.user_id = ? AND account_users.admin = ?",
+          self.id, true)
+  end
 end

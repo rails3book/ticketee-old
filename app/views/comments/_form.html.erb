@@ -1,12 +1,12 @@
 <strong>New comment</strong>
-<%= form_for [@ticket, @comment] do |f| %>
+<%= form_for [@ticket, @comment], :url => ticket_comments_path(current_account, @ticket) do |f| %>
   <%= f.error_messages %>
   <p>
     <%= f.label :text %><br>
     <%= f.text_area :text %>
   </p>
   
-  <% if authorized?(:"change states", @project) %>
+  <% authorized?(:"change states", @project) do %>
     <p>
       <%= f.label :state_id %>
       <%= f.select :state_id, @states.map { |s| [s.name, s.id] },

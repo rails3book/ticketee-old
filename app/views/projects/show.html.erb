@@ -8,11 +8,11 @@
 </menu>
 
 <%= authorized?(:"create tickets", @project) do %>
-  <%= link_to "New Ticket", new_project_ticket_path(@project) %>
+  <%= link_to "New Ticket", new_project_ticket_path(current_account, @project) %>
 <% end %>
 
 <h2>Tickets</h2>
-<%= form_tag search_project_tickets_path(@project),
+<%= form_tag search_project_tickets_path(current_account, @project),
     :method => :get do %>
   <%= label_tag "search" %>
   <%= text_field_tag "search", params[:search] %>

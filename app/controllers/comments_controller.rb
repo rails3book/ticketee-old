@@ -3,17 +3,17 @@ class CommentsController < ApplicationController
   before_filter :find_ticket
 
   def create
-    if cannot?(:"change states", @ticket.project) && !current_user.admin?
+    if cannot?(:"change states", @ticket.project) && admin?
       params[:comment].delete(:state_id)
     end
     
     @comment = @ticket.comments.build(params[:comment].merge(:user => current_user))
     if @comment.save
-      if can?(:tag, @ticket.project) || current_user.admin?
+      if can?(:tag, @ticket.project) || admin?
         @ticket.tag!(params[:tags])
       end
       flash[:notice] = "Comment has been created."
-      redirect_to [@ticket.project, @ticket]
+      redirect_to project_ticket_path(current_account, @ticket.project, @ticket)
     else
       @states = State.all
       flash[:alert] = "Comment has not been created."

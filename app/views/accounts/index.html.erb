@@ -5,7 +5,7 @@
     <%= admins_only(account) do %>
       <%= link_to "Admin", admin_root_path(account) %>
     <% end %>
-    <% if @admin_accounts.include?(account) %>
+    <% if current_user.admin_accounts.include?(account) %>
       <% projects = account.projects %>
     <% else %>
       <% projects = account.projects.readable_by(current_user) %>
@@ -13,6 +13,7 @@
     <% if projects.empty? %>
       There are no projects for this account yet!
     <% else %>
+      <%= current_user.admin_accounts.include?(account) %>
       <ul>
         <% projects.each do |project| %>
           <li><%= link_to project.name, project_path(account, project) %></li>

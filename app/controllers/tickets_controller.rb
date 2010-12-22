@@ -24,11 +24,11 @@ class TicketsController < ApplicationController
   def create
     @ticket = @project.tickets.build(params[:ticket].merge!(:user => current_user))
     if @ticket.save
-      if can?(:tag, @project) || current_user.admin?
+      if can?(:tag, @project) || current_account.admins.include?(current_user)
         @ticket.tag!(params[:tags])
       end
       flash[:notice] = "Ticket has been created."
-      redirect_to [@project, @ticket]
+      redirect_to project_ticket_path(current_account, @project, @ticket)
     else
       flash[:alert] = "Ticket has not been created."
       render :action => "new"
@@ -79,21 +79,21 @@ class TicketsController < ApplicationController
     end
 
     def authorize_create!
-      if !current_user.admin? && cannot?(:"create tickets", @project)
+      if !admin? && cannot?(:"create tickets", @project)
         flash[:alert] = "You are not allowed to create tickets on this project."
         redirect_to @project
       end
     end
 
     def authorize_update!
-      if !current_user.admin? && cannot?(:"edit tickets", @project)
+      if !admin? && cannot?(:"edit tickets", @project)
         flash[:alert] = "You are not allowed to edit tickets on this project."
         redirect_to @project
       end
     end
 
     def authorize_delete!
-      if !current_user.admin? && cannot?(:"delete tickets", @project)
+      if !admin? && cannot?(:"delete tickets", @project)
         flash[:alert] = "You are not allowed to delete tickets from this project."
         redirect_to @project
       end

@@ -14,15 +14,17 @@ class Account < ActiveRecord::Base
                          :in => RESERVED_PATHS,
                          :message => "is not allowed, please choose another."
   
-  def self.has_admin(user)
-    joins(:account_users).
-    where("account_users.user_id = ? AND account_users.admin = ?",
-          user.id, true)
-  end
-  
   def admins
     users.joins(:account_users).
     where("account_users.admin = ?", true)
+  end
+  
+  def projects_for(user)
+    if admins.include?(user)
+      projects
+    else
+      projects.readable_by(user)
+    end
   end
   
 end

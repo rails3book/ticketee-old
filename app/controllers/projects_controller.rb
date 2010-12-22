@@ -1,9 +1,10 @@
 class ProjectsController < ApplicationController
   before_filter :authorize_admin!, :except => [:index, :show]
   before_filter :authenticate_user!, :only => [:index, :show]
+  before_filter :scope_projects
   before_filter :find_project, :only => [:show, :edit, :update, :destroy]
   def index
-    @projects = Project.for(current_user).all
+    
   end
   
   def show
@@ -11,11 +12,11 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    @project = Project.new
+    @project = @projects.new
   end
 
   def create
-    @project = Project.new(params[:project])
+    @project = @projects.new(params[:project])
     if @project.save
       flash[:notice] = "Project has been created."
       redirect_to @project, :flash => { :notice => "Project has been created." }
@@ -45,8 +46,12 @@ class ProjectsController < ApplicationController
   end
 
   private
+    def scope_projects
+      @projects = current_account.projects_for(current_user)
+    end
+    
     def find_project
-      @project = Project.for(current_user).find(params[:id])
+      @project = @projects.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       flash[:alert] = "The project you were looking for could not be found."
       redirect_to projects_path

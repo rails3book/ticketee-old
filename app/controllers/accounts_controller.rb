@@ -3,7 +3,6 @@ class AccountsController < ApplicationController
   
   def index
     @accounts = current_user.accounts.includes(:projects)
-    @admin_accounts = Account.has_admin(current_user)
   end
   
   def new
