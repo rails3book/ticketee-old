@@ -167,6 +167,3 @@ DEPENDENCIES
   rails (= 3.0.3)
   rspec-rails (= 2.0.0)
   sqlite3-ruby
-
-METADATA
-  version: 1.0.6

@@ -4,6 +4,9 @@ Feature: Creating comments
   I want to leave comments
 
   Background:
+    Given there is an account:
+      | name     | path     |
+      | Ticketee | ticketee |
     Given there are the following users:
       | email             | password |
       | user@ticketee.com | password |
