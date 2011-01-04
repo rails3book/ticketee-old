@@ -10,7 +10,7 @@ Feature: Creating projects
       
     And I am signed in as them
     Given I am on the homepage
-    When I follow "New Project"
+    When I follow "New Project" within "#account_ticketee"
 
   Scenario: Creating a project
     And I fill in "Name" with "Textmate 2"

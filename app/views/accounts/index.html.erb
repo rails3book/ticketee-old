@@ -1,9 +1,10 @@
 <h2>Dashboard</h2>
 <% @accounts.each do |account| %>
-  <%= div_for account do %>
+  <div id='account_<%= account.name.parameterize %>'>
     <h3><%= account.name %></h3>
     <%= admins_only(account) do %>
       <%= link_to "Admin", admin_root_path(account) %>
+      <%= link_to "New Project", new_project_path(account) %>
     <% end %>
     <% if current_user.admin_accounts.include?(account) %>
       <% projects = account.projects %>
@@ -14,11 +15,11 @@
       There are no projects for this account yet!
     <% else %>
       <%= current_user.admin_accounts.include?(account) %>
-      <ul>
+      <ul id='<%= account.name.parameterize %>_projects'>
         <% projects.each do |project| %>
           <li><%= link_to project.name, project_path(account, project) %></li>
         <% end %>
       </ul>
     <% end %>
-  <% end %>
+  </div>
 <% end %>

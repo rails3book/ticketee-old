@@ -1,3 +1,4 @@
+@no_account
 Feature: Creating an account
   In order to sign up for ticketee
   As a prospective user

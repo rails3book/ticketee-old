@@ -15,7 +15,7 @@ Feature: Creating comments
       | title                   | description                                           |
       | Change a ticket's state | You should be able to create a comment and change it. |
     Given I am on the homepage
-    And I follow "Ticketee" within "#projects"
+    And I follow "Ticketee" within "#ticketee_projects"
     Given there is a state called "Open"
 
   Scenario: Creating a comment

@@ -10,14 +10,14 @@ gem 'rails', '3.0.3'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
 group :test, :development do
-  gem 'rspec-rails', '2.0.0'
+  gem 'rspec-rails', '~> 2.0'
 end
 
 group :test do
   gem 'database_cleaner'
   gem 'cucumber-rails'
   gem 'capybara'
-  gem 'email_spec', :git => "git://github.com/bmabey/email-spec"
+  gem 'email_spec', '~> 1.1'
   gem 'launchy'
   gem 'factory_girl'
   gem 'gmail', :git => "git://github.com/radar/gmail"

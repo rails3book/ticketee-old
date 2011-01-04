@@ -4,10 +4,6 @@ Feature: Assigning permissions
   I want to check all the boxes
 
   Background:
-    Given there is an account:
-      | name     | path     |
-      | Ticketee | ticketee |
-      
     Given there are the following users:
       | email              | password | admin |
       | admin@ticketee.com | password | true  |

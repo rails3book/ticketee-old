@@ -11,9 +11,9 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
     when /the project page for "([^\"]*)"/
-      project_path(project($1))
+      project_path(@account, project($1))
     when /the "([^\"]*)" ticket in the "([^\"]*)" project/
-      project_ticket_path(project($2), Ticket.find_by_title!($1))
+      project_ticket_path(@account, project($2), Ticket.find_by_title!($1))
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

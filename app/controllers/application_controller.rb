@@ -24,6 +24,8 @@ class ApplicationController < ActionController::Base
   def find_project
     @project = current_account.projects_for(current_user).find(params[:project_id])
     rescue ActiveRecord::RecordNotFound
+      p params
+      puts "COULD NOT FIND PROJECT FOR USER."
       flash[:alert] = "The project you were looking for could not be found."
       redirect_to root_path
   end

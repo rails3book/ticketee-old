@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
     @project = @projects.new(params[:project])
     if @project.save
       flash[:notice] = "Project has been created."
-      redirect_to @project, :flash => { :notice => "Project has been created." }
+      redirect_to project_path(current_account, @project)
     else
       flash[:alert] = "Project has not been created."
       render :action => "new"

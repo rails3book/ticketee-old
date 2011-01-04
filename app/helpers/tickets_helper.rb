@@ -17,6 +17,6 @@ module TicketsHelper
     else
       "Watch this ticket"
     end
-    button_to(text, watch_project_ticket_path(@ticket.project, @ticket))
+    button_to(text, watch_project_ticket_path(current_account, @ticket.project, @ticket))
   end
 end
