@@ -15,7 +15,7 @@ Feature: Deleting tags
       | title | description       | tags              |
       | A tag | Tagging a ticket! | this-tag-must-die |
     Given I am on the homepage
-    When I follow "Ticketee" within "#projects"
+    When I follow "Ticketee" within "#ticketee_projects"
     And I follow "A tag"
   
   

@@ -14,9 +14,9 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def create
-    @user = User.new(params[:user])
-    set_admin
-    if @user.save
+    @user = @account.users.create(params[:user])
+    if @user.persisted?
+      set_admin
       flash[:notice] = "User has been created."
       redirect_to admin_users_path
     else
@@ -62,6 +62,7 @@ class Admin::UsersController < Admin::BaseController
     end
 
     def set_admin
-      @user.admin = params[:user][:admin] == "1"
+      account_user = AccountUser.find_by_user_id_and_account_id(@user.id, current_account.id)
+      account_user.update_attribute(:admin, params[:admin] == "1")
     end
 end
