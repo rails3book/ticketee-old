@@ -7,8 +7,6 @@ gem 'rails', '3.0.3'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
-gem 'factory_girl'
-
 group :test, :development do
   gem 'rspec-rails', '~> 2.4'
 end
@@ -17,6 +15,7 @@ group :test do
   gem 'database_cleaner'
   gem 'cucumber-rails'
   gem 'capybara'
+  gem 'factory_girl'
 end
 # Use unicorn as the web server
 # gem 'unicorn'
