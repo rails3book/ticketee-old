@@ -1,9 +1,6 @@
 module ApplicationHelper
-  def admins_only(&block)
-    if current_user && current_user.admin?
-      block.call
-    end
-    nil
+  def admins_only
+    yield if current_user && current_user.admin?
   end
 
 
