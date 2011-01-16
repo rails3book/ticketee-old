@@ -1,9 +1,3 @@
-Given /^there is an? (admin|user) with the email address "([^\"]*)" and password "([^\"]*)"$/ do |admin, email, password|
-  @user = User.new(:email => email, :password => password, :password_confirmation => password)
-  @user.admin = true if admin == "admin"
-  @user.save!
-end
-
 Given /^"([^\"]*)" has confirmed their account$/ do |email|
   User.find_by_email(email).confirm!
 end
@@ -22,4 +16,16 @@ Given /^I am logged in as them$/ do
     And I press "Sign in"
     Then I should see "Signed in successfully."
   })
+end
+
+Given /^there are the following users:$/ do |table|
+  table.hashes.each do |attributes|
+    unconfirmed = attributes.delete("unconfirmed")
+    @user = User.create!(
+      attributes.merge!(
+        :password_confirmation => attributes[:password]
+      )
+    )
+    @user.confirm! unless unconfirmed
+  end
 end

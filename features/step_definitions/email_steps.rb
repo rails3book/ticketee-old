@@ -96,11 +96,19 @@ Then /^(?:I|they) should see \/([^"]*?)\/ in the email subject$/ do |text|
 end
 
 Then /^(?:I|they) should see "([^"]*?)" in the email body$/ do |text|
+<<<<<<< HEAD
   current_email.body.to_s.should include(text)
 end
 
 Then /^(?:I|they) should see \/([^"]*?)\/ in the email body$/ do |text|
   current_email.body.should =~ Regexp.new(text)
+=======
+  current_email.default_part_body.to_s.should include(text)
+end
+
+Then /^(?:I|they) should see \/([^"]*?)\/ in the email body$/ do |text|
+  current_email.default_part_body.to_s.should =~ Regexp.new(text)
+>>>>>>> ec76b8a6f8158563229d7246b16d7846af0d40d3
 end
 
 Then /^(?:I|they) should see the email delivered from "([^"]*?)"$/ do |text|
@@ -115,6 +123,21 @@ Then /^(?:I|they) should see \/([^\"]*)\/ in the email "([^"]*?)" header$/ do |t
   current_email.should have_header(name, Regexp.new(text))
 end
 
+<<<<<<< HEAD
+=======
+Then /^I should see it is a multi\-part email$/ do
+    current_email.should be_multipart
+end
+
+Then /^(?:I|they) should see "([^"]*?)" in the email html part body$/ do |text|
+    current_email.html_part.body.to_s.should include(text)
+end
+
+Then /^(?:I|they) should see "([^"]*?)" in the email text part body$/ do |text|
+    current_email.text_part.body.to_s.should include(text)
+end
+
+>>>>>>> ec76b8a6f8158563229d7246b16d7846af0d40d3
 #
 # Inspect the Email Attachments
 #
@@ -182,8 +205,11 @@ end
 Then /^save and open all raw emails$/ do
   EmailSpec::EmailViewer::save_and_open_all_raw_emails
 end
+<<<<<<< HEAD
 <<<<<<< HEAD:features/step_definitions/email_steps.rb
 
 World(EmailSpec::Helpers)
 =======
 >>>>>>> chapter_6:features/step_definitions/email_steps.rb
+=======
+>>>>>>> ec76b8a6f8158563229d7246b16d7846af0d40d3

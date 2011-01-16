@@ -1,8 +1,18 @@
 # Use this hook to configure devise mailer, warden hooks and so forth. The first
 # four configuration values can also be set straight in your models.
 Devise.setup do |config|
+  # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in DeviseMailer.
   config.mailer_sender = "please-change-me@config-initializers-devise.com"
+
+  # Configure the class responsible to send e-mails.
+  # config.mailer = "Devise::Mailer"
+
+  # ==> ORM configuration
+  # Load and configure the ORM. Supports :active_record (default) and
+  # :mongoid (bson_ext recommended) by default. Other ORMs may be
+  # available as additional gems.
+  require 'devise/orm/active_record'
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating an user. By default is
@@ -17,34 +27,36 @@ Devise.setup do |config|
 
   # Tell if authentication through HTTP Basic Auth is enabled. True by default.
   # config.http_authenticatable = true
-
   # The realm used in Http Basic Authentication
   # config.http_authentication_realm = "Application"
 
   # ==> Configuration for :database_authenticatable
-  # Invoke `rake secret` and use the printed value to setup a pepper to generate
-  # the encrypted password. By default no pepper is used.
-  # config.pepper = "rake secret output"
+  # For bcrypt, this is the cost for hashing the password and defaults to 10. If
+  # using other encryptors, it sets how many times you want the password re-encrypted.
+  config.stretches = 10
 
-  # Configure how many times you want the password is reencrypted. Default is 10.
-  # config.stretches = 10
-
-  # Define which will be the encryption algorithm. Supported algorithms are :sha1
-  # (default), :sha512 and :bcrypt. Devise also supports encryptors from others
-  # authentication tools as :clearance_sha1, :authlogic_sha512 (then you should set
-  # stretches above to 20 for default behavior) and :restful_authentication_sha1
+  # Define which will be the encryption algorithm. Devise also supports encryptors
+  # from others authentication tools as :clearance_sha1, :authlogic_sha512 (then
+  # you should set stretches above to 20 for default behavior) and :restful_authentication_sha1
   # (then you should set stretches to 10, and copy REST_AUTH_SITE_KEY to pepper)
-  # config.encryptor = :sha1
+  config.encryptor = :bcrypt
+
+  # Setup a pepper to generate the encrypted password.
+  config.pepper = "894be64eeae605c02aec357b06b7fd918ef8f930bd11e9db29d597d326699af99f4217068d1a9d4b7cda31d9f667a963362a4a22aa456f19433f6ef0ab5b48f8"
 
   # ==> Configuration for :confirmable
-  # The time you want give to your user to confirm his account. During this time
+  # The time you want to give your user to confirm his account. During this time
   # he will be able to access your application without confirming. Default is nil.
+  # When confirm_within is zero, the user won't be able to sign in without confirming. 
+  # You can use this to let your user access some features of your application 
+  # without confirming the account, but blocking it after a certain period 
+  # (ie 2 days). 
   # config.confirm_within = 2.days
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
   # config.remember_for = 2.weeks
-
+  
   # ==> Configuration for :validatable
   # Range for password length
   # config.password_length = 6..20
@@ -65,7 +77,7 @@ Devise.setup do |config|
 
   # Defines which strategy will be used to unlock an account.
   # :email = Sends an unlock link to the user email
-  # :time  = Reanables login after a certain ammount of time (see :unlock_in below)
+  # :time  = Re-enables login after a certain amount of time (see :unlock_in below)
   # :both  = Enables both strategies
   # :none  = No unlock strategy. You should handle unlocking by yourself.
   # config.unlock_strategy = :both
