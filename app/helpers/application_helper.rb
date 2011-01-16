@@ -5,11 +5,7 @@ module ApplicationHelper
 
 
   def authorized?(permission, object, &block)
-    if can?(permission.to_sym, object) || (current_user && current_user.admin?)
-      block.call
-    end
-    nil
+    yield if can?(permission.to_sym, object) ||
+             (current_user && current_user.admin?)
   end
-      
- 
 end
