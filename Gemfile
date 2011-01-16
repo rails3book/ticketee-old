@@ -27,6 +27,8 @@ gem 'cancan'
 gem 'paperclip'
 
 gem 'searcher', '0.0.4'
+
+gem 'grape'
 # Use unicorn as the web server
 # gem 'unicorn'
 

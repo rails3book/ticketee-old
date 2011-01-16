@@ -10,7 +10,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101011111251) do
+ActiveRecord::Schema.define(:version => 20110114102821) do
+
+  create_table "account_users", :force => true do |t|
+    t.integer  "account_id"
+    t.integer  "user_id"
+    t.boolean  "admin",      :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "accounts", :force => true do |t|
+    t.string   "name"
+    t.string   "path"
+    t.integer  "owner_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name"
@@ -99,6 +115,7 @@ ActiveRecord::Schema.define(:version => 20101011111251) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin",                               :default => false
+    t.string   "authentication_token"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

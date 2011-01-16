@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin::UsersController do            
+describe Admin::UsersController do
   let(:user) { create_user! }
   
   context "non-admin users" do

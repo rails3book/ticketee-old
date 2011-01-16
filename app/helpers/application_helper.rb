@@ -1,11 +1,11 @@
 module ApplicationHelper
   def admins_only
-    yield if current_user && current_user.admin?
+    yield if current_user.try(:admin?)
   end
 
 
   def authorized?(permission, object, &block)
     yield if can?(permission.to_sym, object) ||
-             (current_user && current_user.admin?)
+             current_user.try(:admin?)
   end
 end
