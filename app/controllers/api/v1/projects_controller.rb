@@ -1,6 +1,11 @@
 class Api::V1::ProjectsController < Api::V1::BaseController
   def index
-    self.response_body = Project.readable_by(@current_user).to_json
-    self.content_type = "text/json"
+    projects = Project.readable_by(@current_user)
+    respond_with(projects)
+  end
+  
+  def create
+    project = Project.create(params[:project])
+    respond_with(project)
   end
 end

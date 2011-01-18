@@ -1,13 +1,12 @@
-class Api::V1::BaseController < ActionController::Metal
-  include AbstractController::Callbacks
+class Api::V1::BaseController < ActionController::Base
   before_filter :authenticate_user
+  respond_to :json, :xml
   
   private
     def authenticate_user
       @current_user = User.find_by_authentication_token(params[:token])
-      if @current_user.nil?
-        self.response_body = { :error => "Token is invalid." }.to_json
-        self.content_type = "text/json"
+      unless @current_user
+        respond_with({ :error => "Token is invalid." })
       end
     end
 end
