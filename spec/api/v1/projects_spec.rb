@@ -1,11 +1,8 @@
 require "spec_helper"
-require "api/helper"
 
 describe "/api/v1/projects", :type => :api do
-
   let(:user) { create_user! }
   let(:token) { user.authentication_token }
-
 
   context "projects viewable by this user" do
 
@@ -18,18 +15,17 @@ describe "/api/v1/projects", :type => :api do
 
     let(:url) { "/api/v1/projects" }
     it "json" do
-      get!("#{url}.json")
-      @response.body.should eql(Project.readable_by(user).to_json)
-      @status.should eql(200)
-      projects = JSON.parse(@response.body)
+      get "#{url}.json", :token => token
+      last_response.body.should eql(Project.readable_by(user).to_json)
+      last_response.status.should eql(200)
+      projects = JSON.parse(last_response.body)
       projects.any? { |p| p["project"]["name"] == "Inspector" }.should be_true
     end
 
     it "XML" do
-      get!("#{url}.xml")
-      @response.body.should eql(Project.readable_by(user).to_xml)
-      @status = 200
-      projects = Nokogiri::XML(@response.body)
+      get "#{url}.xml", :token => token
+      last_response.body.should eql(Project.readable_by(user).to_xml)
+      projects = Nokogiri::XML(last_response.body)
       projects.css("project name").text.should eql("Inspector")
     end
   end
@@ -42,10 +38,12 @@ describe "/api/v1/projects", :type => :api do
     let(:url) { "/api/v1/projects" }
     
     it "sucessful JSON" do
-      post!("#{url}.json", :project => {
-                             :name => "Ticketee"})
-      @status.should eql(201)
-      @response.body.should eql(Project.find_by_name("Ticketee").to_json)
+      post "#{url}.json", :token => token,
+                          :project => {
+                            :name => "Ticketee"
+                          }
+      last_response.status.should eql(201)
+      last_response.body.should eql(Project.find_by_name("Ticketee").to_json)
     end
   end
 end
