@@ -6,7 +6,19 @@ describe "API errors", :type => :api do
 
   it "making a request with no token" do
     get "/api/v1/projects.json", :token => token
-    last_response.body.should eql({ :error => "Token is invalid." }.to_json)
+    error = { :error => "Token is invalid." }
+    last_response.body.should eql(error.to_json)
+  end
+  
+  it "standard users cannot create projects" do
+    user = Factory(:user)
+      post "/api/v1/projects.json", :token => user.authentication_token,
+                        :project => {
+                          :name => "Ticketee"
+                        }
+    error = { :error => "You must be an admin to do that." }
+    last_response.body.should eql(error.to_json)
+    Project.find_by_name("Ticketee").should be_nil
   end
 
 end

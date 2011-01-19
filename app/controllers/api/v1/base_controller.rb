@@ -9,4 +9,11 @@ class Api::V1::BaseController < ActionController::Base
         respond_with({ :error => "Token is invalid." })
       end
     end
+    
+    def authorize_admin!
+      if !@current_user.admin?
+        error = { :error => "You must be an admin to do that." }
+        render params[:format].to_sym => error
+      end
+    end
 end

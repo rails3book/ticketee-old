@@ -1,7 +1,12 @@
 require "spec_helper"
 
 describe "/api/v1/projects", :type => :api do
-  let(:user) { create_user! }
+  let(:user) do 
+    user = create_user!
+    user.update_attribute(:admin, true)
+    user
+  end
+  
   let(:token) { user.authentication_token }
 
   context "projects viewable by this user" do
