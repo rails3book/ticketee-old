@@ -48,6 +48,7 @@ describe "/api/v1/projects", :type => :api do
                             :name => "Ticketee"
                           }
       last_response.status.should eql(201)
+      p last_response.headers
       last_response.body.should eql(Project.find_by_name("Ticketee").to_json)
     end
   end

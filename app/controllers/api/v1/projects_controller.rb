@@ -8,6 +8,6 @@ class Api::V1::ProjectsController < Api::V1::BaseController
 
   def create
     project = Project.create(params[:project])
-    respond_with(project)
+    respond_with(project, :location => api_v1_project_path(project))
   end
 end
