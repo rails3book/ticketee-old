@@ -8,9 +8,10 @@ describe "/api/v1/projects", :type => :api do
   end
   
   let(:token) { user.authentication_token }
+  let(:project) { Factory(:project, :name => "Inspector") }
 
   context "projects viewable by this user" do
-    let(:project) { Factory(:project, :name => "Inspector") }
+
 
     before do
       user.permissions.create!(:action => "view", :object => project)
@@ -66,6 +67,35 @@ describe "/api/v1/projects", :type => :api do
                           }
       last_response.status.should eql(201)
       last_response.body.should eql(Project.find_by_name("Ticketee").to_json)
+    end
+  end
+  
+  context "updating a project" do
+    let(:url) { "/api/v1/projects/#{project.id}" }
+    it "successful JSON" do
+      project.name.should eql("Inspector")
+      put "#{url}.json", :token => token,
+                          :project => { 
+                            :name => "Not Inspector"
+                          }
+      last_response.status.should eql(200)
+      
+      project.reload
+      project.name.should eql("Not Inspector")
+    end
+    
+    it "unsuccessful JSON" do
+      project.name.should eql("Inspector")
+      put "#{url}.json", :token => token,
+                          :project => { 
+                            :name => ""
+                          }
+      last_response.status.should eql(422)
+      
+      project.reload
+      project.name.should eql("Inspector")
+      error = { :name => "can't be blank"}
+      last_response.body.should eql(error.to_json)
     end
   end
 end
