@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "/api/v1/projects", :type => :api do
+describe "/api/v2/projects", :type => :api do
   let(:user) do 
     user = create_user!
     user.update_attribute(:admin, true)
@@ -12,32 +12,46 @@ describe "/api/v1/projects", :type => :api do
 
   context "projects viewable by this user" do
 
-
     before do
       user.permissions.create!(:action => "view", :object => project)
       Factory(:project)
     end
 
     context "index" do
-      let(:url) { "/api/v1/projects" }
+      let(:url) { "/api/v2/projects" }
+      let(:options) { { :except => :name, :methods => :title } }
+      
       it "JSON" do
         get "#{url}.json", :token => token
-        last_response.body.should eql(Project.readable_by(user).to_json)
+        
+        body = Project.readable_by(user).to_json(options)
+        
+        last_response.body.should eql(body)
         last_response.status.should eql(200)
+        
         projects = JSON.parse(last_response.body)
-        projects.any? { |p| p["project"]["name"] == "Inspector" }.should be_true
+        projects.any? do |p|
+          p["project"]["title"] == "Inspector"
+        end.should be_true
+        
+        projects.all? do |p|
+          p["project"]["name"].blank? 
+        end.should be_true
       end
 
       it "XML" do
         get "#{url}.xml", :token => token
-        last_response.body.should eql(Project.readable_by(user).to_xml)
+        
+        body = Project.readable_by(user).to_xml(options)
+        last_response.body.should eql(body)
         projects = Nokogiri::XML(last_response.body)
-        projects.css("project name").text.should eql("Inspector")
+        projects.css("project title").text.should eql("Inspector")
+        projects.css("project name").text.should eql("")
       end
     end
     
     context "show" do
-      let(:url) { "/api/v1/projects/#{project.id}"}
+      let(:url) { "/api/v2/projects/#{project.id}"}
       
       before do
         Factory(:ticket, :title => "A ticket, nothing more.",
@@ -58,7 +72,7 @@ describe "/api/v1/projects", :type => :api do
   end
   
   context "creating a project" do
-    let(:url) { "/api/v1/projects" }
+    let(:url) { "/api/v2/projects" }
     
     it "sucessful JSON" do
       post "#{url}.json", :token => token,
@@ -71,7 +85,7 @@ describe "/api/v1/projects", :type => :api do
   end
   
   context "updating a project" do
-    let(:url) { "/api/v1/projects/#{project.id}" }
+    let(:url) { "/api/v2/projects/#{project.id}" }
     it "successful JSON" do
       project.name.should eql("Inspector")
       put "#{url}.json", :token => token,
@@ -100,7 +114,7 @@ describe "/api/v1/projects", :type => :api do
   end
   
   context "deleting a project" do
-    let(:url) { "/api/v1/projects/#{project.id}" }
+    let(:url) { "/api/v2/projects/#{project.id}" }
     it "JSON" do
       delete "#{url}.json", :token => token
       last_response.status.should eql(200)

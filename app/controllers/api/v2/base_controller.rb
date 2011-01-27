@@ -1,4 +1,4 @@
-class Api::V1::BaseController < ActionController::Base
+class Api::V2::BaseController < ActionController::Base
   before_filter :authenticate_user
   before_filter :check_rate_limit
   respond_to :json, :xml

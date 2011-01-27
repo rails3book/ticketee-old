@@ -1,10 +1,10 @@
-class Api::V1::ProjectsController < Api::V1::BaseController
+class Api::V2::ProjectsController < Api::V1::BaseController
   before_filter :authorize_admin!, :except => [:index, :show]
   before_filter :find_project, :only => [:show, :update, :destroy]
 
   def index
     projects = Project.readable_by(@current_user)
-    respond_with(projects)
+    respond_with(projects, :except => :name, :methods => :title)
   end
 
   def create

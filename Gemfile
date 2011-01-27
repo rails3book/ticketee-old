@@ -22,7 +22,7 @@ group :test do
   gem 'gmail', :git => "git://github.com/radar/gmail"
 end
 
-gem 'devise', '1.2.rc'
+gem 'devise', '1.1.5'
 gem 'cancan'
 
 gem 'paperclip'
