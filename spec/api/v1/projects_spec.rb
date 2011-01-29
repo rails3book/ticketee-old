@@ -68,6 +68,14 @@ describe "/api/v1/projects", :type => :api do
       last_response.status.should eql(201)
       last_response.body.should eql(Project.find_by_name("Ticketee").to_json)
     end
+    
+    it "unsuccessful JSON" do
+      post "#{url}.json", :token => token,
+                          :project => {}
+      last_response.status.should eql(422)
+      errors = {"name" => "can't be blank"}
+      last_response.body.should eql(errors.to_json)
+    end
   end
   
   context "updating a project" do
