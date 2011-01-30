@@ -1,21 +1,21 @@
 source 'http://rubygems.org'
 gem 'escape_utils'
-gem 'rails', '3.0.0'
+gem 'rails', '3.0.3'
 
 # Bundle edge Rails instead:
 #gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'sqlite3'
 
 group :test do
-  gem 'rspec-rails', '~> 2.0.0.beta.19'
+  gem 'rspec-rails', '~> 2.4'
 end
 
 group :cucumber do
   gem 'database_cleaner'
   gem 'cucumber-rails'
   gem 'capybara'
-  gem 'email_spec', :git => "git://github.com/bmabey/email-spec.git", :branch => "rails3", :require => "email-spec"
+  gem 'email_spec'
   gem 'launchy'
 end
 
