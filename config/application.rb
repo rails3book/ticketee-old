@@ -1,5 +1,4 @@
-require File.expand_path('../boot', __FILE__)
-
+require File.expand_path('../boo
 require 'rails/all'
 
 # If you have a Gemfile, require the gems listed there, including any gems
@@ -49,7 +48,7 @@ module Ticketee
       :address              => "smtp.sendgrid.com",
       :domain               => 'ticketeeapp.com',
       :user_name            => 'radarlistener@gmail.com',
-      :password             => 'thisisapassword',
-      :authentication       => 'plain' }
+      :password             => 'thisisapassword'
+     }
   end
 end
