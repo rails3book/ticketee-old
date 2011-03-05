@@ -1,4 +1,5 @@
 require File.expand_path('../boot', __FILE__)
+
 require 'rails/all'
 
 # If you have a Gemfile, require the gems listed there, including any gems
@@ -42,13 +43,14 @@ module Ticketee
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
-
-    ActionMailer::Base.smtp_settings = {  
-      :address => "smtp.sendgrid.com",  
-      :domain => "ticketeeapp.com",
-      :user_name => "radarlistener@gmail.com",
-      :password => "thisisapassword",
-      :authentication => :plain
-    }
+    
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address              => "smtp.sendgrid.com",
+      :domain               => 'ticketeeapp.com',
+      :user_name            => 'radarlistener@gmail.com',
+      :password             => 'thisisapassword',
+      :authentication       => 'plain',
+      :enable_starttls_auto => false }
   end
 end
