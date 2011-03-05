@@ -43,5 +43,13 @@ module Ticketee
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address              => "smtp.sendgrid.com",
+      :domain               => 'ticketeeapp.com',
+      :user_name            => 'radarlistener@gmail.com',
+      :password             => 'thisisapassword',
+      :authentication       => 'plain' }
   end
 end
