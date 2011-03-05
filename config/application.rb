@@ -49,7 +49,7 @@ module Ticketee
       :address              => "smtp.sendgrid.com",
       :domain               => 'ticketeeapp.com',
       :user_name            => 'radarlistener@gmail.com',
-      :password             => 'thisisapassword',
+      :password             => 'dudpassword',
       :authentication       => 'plain',
       :enable_starttls_auto => false }
   end
