@@ -18,7 +18,7 @@ Feature: Ticket notifications
       | title        | description       |
       | Release date | TBA very shortly. |
 
-    Given I am signed in as "bob@ticketee.com"        
+    Given I am signed in as "bob@ticketee.com"
     Given I am on the homepage
 
   Scenario: Ticket owner is automatically subscribed to a ticket
@@ -30,7 +30,7 @@ Feature: Ticket notifications
     Then "alice@ticketee.com" should receive an email
     When "alice@ticketee.com" opens the email
     Then they should see "updated the Release date ticket" in the email body
-    Then they click the first link in the email
+    Then they follow "view this ticket online here" in the email
     Then I should be on the "Release date" ticket in the "TextMate 2" project
   
   Scenario: Comment authors are automatically subscribed to a ticket
@@ -42,7 +42,6 @@ Feature: Ticket notifications
     When I follow "Sign out"
     
     Given a clear email queue
-
     Given I am signed in as "alice@ticketee.com"
     When I follow "TextMate 2"
     And I follow "Release date"
