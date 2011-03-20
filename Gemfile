@@ -28,8 +28,8 @@ gem 'cancan'
 gem 'paperclip'
 
 gem 'searcher', '0.0.5'
+gem 'kaminari'
 
-gem 'grape'
 # Use unicorn as the web server
 # gem 'unicorn'
 
