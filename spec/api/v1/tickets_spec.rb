@@ -1,19 +1,23 @@
 require 'spec_helper'
 describe "/api/v1/tickets", :type => :api do
-  let(:user) do 
-    user = create_user!
-    user.update_attribute(:admin, true)
-    user
-  end
-
-  let(:token) { user.authentication_token }
   let(:project) { Factory(:project, :name => "Inspector") }
+  
+  before do
+    @user = create_user!
+    @user.update_attribute(:admin, true)
+    @user.permissions.create!(:action => "view", 
+                              :object => project)
+  end
+  
+  let(:token) { @user.authentication_token }
+  
   
   context "index" do
     before do
       5.times do
-        Factory(:ticket, :project => project)
+        Factory(:ticket, :project => project, :user => @user)
       end
+
     end
     let(:url) { "/api/v1/projects/#{project.id}/tickets" }
   
