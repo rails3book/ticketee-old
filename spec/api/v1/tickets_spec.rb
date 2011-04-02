@@ -31,18 +31,19 @@ describe "/api/v1/tickets", :type => :api do
   context "pagination" do
     before do
       100.times do
-        Factory(:ticket, :project => project)
+        Factory(:ticket, :project => project, :user => @user)
       end
     end
     
     it "gets the first page" do
-      get "/api/v1/projects/#{project.id}/tickets?page=1"
-      last_response.body.should eql(project.tickets.per(50).page(1).to_json)
+      get "/api/v1/projects/#{project.id}/tickets.json", :token => token
+      last_response.body.should eql(project.tickets.page(1).per(50).to_json)
     end
     
     it "gets the second page" do
-      get "/api/v1/projects/#{project.id}/tickets?page=2"
-      last_response.body.should eql(project.tickets.per(50).page(2).to_json)
+      get "/api/v1/projects/#{project.id}/tickets.json", :page => 2, 
+                                                    :token => token
+      last_response.body.should eql(project.tickets.page(2).per(50).to_json)
     end
   end
 end

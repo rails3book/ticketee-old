@@ -10,10 +10,14 @@ class TicketsController < ApplicationController
   before_filter :authorize_create!, :only => [:new, :create]
   before_filter :authorize_update!, :only => [:edit, :update]
   before_filter :authorize_delete!, :only => [:destroy]
+  
+  cache_sweeper :tickets_sweeper, :only => [:create, :update, :destroy]
 
   def show
     @comment = @ticket.comments.build
     @states = State.all
+    fresh_when :last_modified => @ticket.updated_at,
+               :etag => @ticket
   end
 
   def new

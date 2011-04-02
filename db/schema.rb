@@ -10,23 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110124055512) do
-
-  create_table "account_users", :force => true do |t|
-    t.integer  "account_id"
-    t.integer  "user_id"
-    t.boolean  "admin",      :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "accounts", :force => true do |t|
-    t.string   "name"
-    t.string   "path"
-    t.integer  "owner_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(:version => 20110327205617) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name"
@@ -95,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20110124055512) do
     t.integer  "state_id"
   end
 
+  add_index "tickets", ["project_id"], :name => "index_tickets_on_project_id"
   add_index "tickets", ["state_id"], :name => "index_tickets_on_state_id"
 
   create_table "users", :force => true do |t|

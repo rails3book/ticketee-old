@@ -2,12 +2,17 @@ class ProjectsController < ApplicationController
   before_filter :authorize_admin!, :except => [:index, :show]
   before_filter :authenticate_user!, :only => [:index, :show]
   before_filter :find_project, :only => [:show, :edit, :update, :destroy]
+  
+  caches_action :show, :cache_path => (proc do
+    project_url(params[:id]) + "/#{current_user.id}/#{params[:page] || 1}"
+  end)
+
   def index
     @projects = Project.for(current_user).all
   end
   
   def show
-    @tickets = @project.tickets.page(params[:page]).per(50)
+    @tickets = @project.tickets.includes(:tags).page(params[:page]).per(50)
   end
 
   def new
