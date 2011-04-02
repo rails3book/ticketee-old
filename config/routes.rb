@@ -5,24 +5,29 @@ Ticketee::Application.routes.draw do
         resources :tickets
       end
     end
-  end
-  
-  namespace :api do
+
     namespace :v2 do
       resources :projects
     end
+
+    namespace :v3 do
+      namespace :json do
+        mount Api::V3::JSON::Tickets, :at => "projects/:project_id/tickets"
+      end
+    end
+
   end
-  
+
   devise_for :users
 
   root :to => "projects#index"
-  
+
   resources :projects do
     resources :tickets do
       collection do
         get :search
       end
-      
+
       member do
         post :watch
       end
