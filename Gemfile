@@ -32,6 +32,7 @@ gem 'kaminari'
 
 gem 'sinatra'
 
+gem 'oa-oauth', :require => "omniauth/oauth"
 # Use unicorn as the web server
 # gem 'unicorn'
 
