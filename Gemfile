@@ -22,7 +22,7 @@ group :test do
   gem 'gmail', :git => "git://github.com/radar/gmail"
 end
 
-gem 'devise'
+gem 'devise', :path => "vendor/gems/devise"
 gem 'cancan'
 
 gem 'paperclip'
@@ -32,7 +32,7 @@ gem 'kaminari'
 
 gem 'sinatra'
 
-gem 'oa-oauth', :require => "omniauth/oauth"
+gem 'omniaut'
 # Use unicorn as the web server
 # gem 'unicorn'
 

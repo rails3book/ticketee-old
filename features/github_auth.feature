@@ -9,6 +9,6 @@ Feature: GitHub auth
   Scenario: Signing in with GitHub
     Given I am on the homepage
     And I follow "sign_in_with_github"
-    Then I should see "Signed in with GitHub successfully."
-    Then I should see "Signed in as A GitHubber"
+    Then I should see "Signed in with Github successfully."
+    Then I should see "Signed in as A GitHubber (githubber)"
   
