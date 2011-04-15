@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 gem 'escape_utils'
-gem 'rails', '3.0.5'
+gem 'rails', '3.0.7.rc1'
 
 
 # Bundle edge Rails instead:
@@ -22,7 +22,7 @@ group :test do
   gem 'gmail', :git => "git://github.com/radar/gmail"
 end
 
-gem 'devise', :path => "vendor/gems/devise"
+gem 'devise'
 gem 'cancan'
 
 gem 'paperclip'
@@ -32,7 +32,7 @@ gem 'kaminari'
 
 gem 'sinatra'
 
-gem 'omniaut'
+gem 'omniauth'
 # Use unicorn as the web server
 # gem 'unicorn'
 
