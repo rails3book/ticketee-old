@@ -19,6 +19,7 @@ Ticketee::Application.routes.draw do
   end
 
   devise_for :users
+  match '/auth/:action/callback', :controller => "users/omniauth_callbacks"
 
   root :to => "projects#index"
 

@@ -30,3 +30,7 @@ Given /^I am signed in as them$/ do
     Then I should see "Signed in successfully."
   })
 end
+
+When /^this user confirms their account$/ do
+  User.all.map(&:confirm!)
+end

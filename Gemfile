@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 gem 'escape_utils'
-gem 'rails', '3.0.5'
+gem 'rails', '3.0.7.rc1'
 
 
 # Bundle edge Rails instead:
@@ -32,7 +32,7 @@ gem 'kaminari'
 
 gem 'sinatra'
 
-gem 'oa-oauth', :require => "omniauth/oauth"
+gem 'omniauth'
 # Use unicorn as the web server
 # gem 'unicorn'
 

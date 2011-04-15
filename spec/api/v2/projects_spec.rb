@@ -108,8 +108,8 @@ describe "/api/v2/projects", :type => :api do
       
       project.reload
       project.name.should eql("Inspector")
-      error = { :name => "can't be blank"}
-      last_response.body.should eql(error.to_json)
+      errors = { :name => ["can't be blank"]}
+      last_response.body.should eql(errors.to_json)
     end
   end
   

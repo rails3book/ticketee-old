@@ -73,7 +73,7 @@ describe "/api/v1/projects", :type => :api do
       post "#{url}.json", :token => token,
                           :project => {}
       last_response.status.should eql(422)
-      errors = {"name" => "can't be blank"}
+      errors = {"name" => ["can't be blank"]}
       last_response.body.should eql(errors.to_json)
     end
   end
@@ -102,7 +102,7 @@ describe "/api/v1/projects", :type => :api do
       
       project.reload
       project.name.should eql("Inspector")
-      error = { :name => "can't be blank"}
+      error = { :name => ["can't be blank"]}
       last_response.body.should eql(error.to_json)
     end
   end
